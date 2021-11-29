@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:theguiderclienttt/Meeting.dart';
 import 'package:theguiderclienttt/Screens/Splash.dart';
 
 void main() async {
@@ -14,7 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TheGuiderClient',
-      home: Splashscreen(),
+      // home: AddCource(),
+       home: Splashscreen(),
+     // home: Meeting(),
     );
   }
 }

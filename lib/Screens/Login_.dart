@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  login() async {
+    login() async {
     try {
       email = _email.text;
       password = _password.text;

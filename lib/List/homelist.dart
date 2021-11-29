@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/Meeting.dart';
-import 'package:theguiderclienttt/Screens/joinmeeting.dart';
+import 'package:theguiderclienttt/Screens/Madarsa.dart';
 
 class HomeList {
   var destination;
@@ -19,12 +19,12 @@ List<HomeList> homelist = [
   HomeList(
     destination: 'Online Madarsa ',
     image: 'assets/OnlineMadarsa.jpeg',
-    navigation: Meeting(),
+    navigation: OnlineMadarsa(),
   ),
   HomeList(
     destination: 'Full Quran',
     image: 'assets/Quran.jpeg',
-    navigation: joinmeeting(),
+    navigation: 'joinmeeting()',
   ),
   HomeList(
     destination: 'Quran Audio',

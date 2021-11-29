@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/Screens/Login_.dart';
+import 'package:theguiderclienttt/globals.dart';
 
 class Splashscreen extends StatefulWidget {
   @override
@@ -27,6 +28,7 @@ class _SplashscreenState extends State<Splashscreen> {
 
   @override
   void initState() {
+    RetrieveDataSTD();
     initi();
     super.initState();
   }

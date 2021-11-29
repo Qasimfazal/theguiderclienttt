@@ -1,18 +1,12 @@
 import 'dart:io';
-
+import 'globals.dart' as globals;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Meeting());
-  }
-}
+import 'package:theguiderclienttt/widget/FadedAnimation.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -21,8 +15,9 @@ class Meeting extends StatefulWidget {
 
 class _MeetingState extends State<Meeting> {
   final serverText = TextEditingController();
-  final roomText = TextEditingController(text: "plugintestroom");
-  final subjectText = TextEditingController(text: "My Plugin Test Meeting");
+  // final roomText = TextEditingController(text: "plugintestroom");
+  final roomText = TextEditingController(text: "room");
+  final subjectText = TextEditingController(text: globals.CourceName);
   final nameText = TextEditingController(text: "Plugin Test User");
   final emailText = TextEditingController(text: "fake@email.com");
   final iosAppBarRGBAColor =
@@ -30,10 +25,66 @@ class _MeetingState extends State<Meeting> {
   bool isAudioOnly = true;
   bool isAudioMuted = true;
   bool isVideoMuted = true;
+  String RandomNumber = 'x';
+  ///
+  // // String CourceName;
+  // // String StartHour;
+  // // String Minutes ;
+  // // String RoomId;
+  // // String StudentStrength ;
+  // // String TeacherUid = ;
+  // // String CourceDuration;
+  //
+  // void RetrieveDataSTD() async {
+  //   List<String> childkeyslist = new List<String>();
+  //   FirebaseAuth auth = FirebaseAuth.instance;
+  //   DatabaseReference databaseRef = FirebaseDatabase.instance
+  //       .reference()
+  //       .child("courseSchedule")
+  //       .child(auth.currentUser.uid);
+  //   databaseRef.once().then((DataSnapshot snapshot) {
+  //     String keys = snapshot.key;
+  //     if (keys == auth.currentUser.uid) {
+  //       Map<dynamic, dynamic> value = snapshot.value;
+  //       Iterable childkey = value.keys;
+  //       childkey.forEach((element) {
+  //         childkeyslist.add(element);
+  //         for (int i = 0; i < childkeyslist.length; i++) {
+  //           DatabaseReference reff = FirebaseDatabase.instance
+  //               .reference()
+  //               .child("courseSchedule")
+  //               .child(auth.currentUser.uid)
+  //               .child(childkeyslist.elementAt(i));
+  //           reff.once().then((DataSnapshot dataSnapshot) {
+  //           globals.CourceName = dataSnapshot.value['Courcename'];
+  //           globals.StartHour= dataSnapshot.value['Hours'];
+  //             globals.Minutes = dataSnapshot.value['Minutes'];
+  //         globals.CourceDuration = dataSnapshot.value['courceDuration'];
+  //             globals.RoomId= dataSnapshot.value['Room ID'];
+  //            globals.StudentStrength= dataSnapshot.value['Student Strength'];
+  //           globals.TeacherUid = dataSnapshot.value['Teacher_Uid'];
+  //
+  //             ///
+  //             // String CourceName = DBCourceName;
+  //             // String StartHour = DBhour;
+  //             // String Minutes =DBminute;
+  //             // String RoomId=DB_Roomid ;
+  //             // String StudentStrength =DB_StudentStrength;
+  //             // String TeacherUid = DB_TeacherUid;
+  //             // String CourceDuration =DB_cduration;
+  //           });
+  //         }
+  //       });
+  //     }
+  //
+  //   });
+  // }
 
   @override
   void initState() {
     super.initState();
+    // Random_Generator();
+   // RetrieveData();
     JitsiMeet.addListener(JitsiMeetingListener(
         onConferenceWillJoin: _onConferenceWillJoin,
         onConferenceJoined: _onConferenceJoined,
@@ -44,6 +95,7 @@ class _MeetingState extends State<Meeting> {
   @override
   void dispose() {
     super.dispose();
+
     JitsiMeet.removeAllListeners();
   }
 
@@ -52,13 +104,10 @@ class _MeetingState extends State<Meeting> {
     double width = MediaQuery.of(context).size.width;
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-        ),
         body: Container(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16.0,
-          ),
+          // padding: const EdgeInsets.symmetric(
+          //   horizontal: 16.0,
+          // ),
           child: kIsWeb
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,7 +129,9 @@ class _MeetingState extends State<Meeting> {
                                   extraJS: [
                                     // extraJs setup example
                                     '<script>function echo(){console.log("echo!!!")};</script>',
-                                    '<script src="https://code.jquery.com/jquery-3.5.1.slim.js" integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>'
+                                    '<script src="https://code.jquery.com/jquery-3.5.1.slim.js"'
+                                        ' integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" '
+                                        'crossorigin="anonymous"></script>'
                                   ],
                                 ),
                               )),
@@ -96,114 +147,492 @@ class _MeetingState extends State<Meeting> {
   Widget meetConfig() {
     return SingleChildScrollView(
       child: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 16.0,
-          ),
-          TextField(
-            controller: serverText,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "Server URL",
-                hintText: "Hint: Leave empty for meet.jitsi.si"),
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          TextField(
-            controller: roomText,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Room",
-            ),
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          TextField(
-            controller: subjectText,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Subject",
-            ),
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          TextField(
-            controller: nameText,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Display Name",
-            ),
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          TextField(
-            controller: emailText,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: "Email",
-            ),
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          TextField(
-            controller: iosAppBarRGBAColor,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: "AppBar Color(IOS only)",
-                hintText: "Hint: This HAS to be in HEX RGBA format"),
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          CheckboxListTile(
-            title: Text("Audio Only"),
-            value: isAudioOnly,
-            onChanged: _onAudioOnlyChanged,
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          CheckboxListTile(
-            title: Text("Audio Muted"),
-            value: isAudioMuted,
-            onChanged: _onAudioMutedChanged,
-          ),
-          SizedBox(
-            height: 14.0,
-          ),
-          CheckboxListTile(
-            title: Text("Video Muted"),
-            value: isVideoMuted,
-            onChanged: _onVideoMutedChanged,
-          ),
-          Divider(
-            height: 48.0,
-            thickness: 2.0,
-          ),
-          SizedBox(
-            height: 64.0,
-            width: double.maxFinite,
-            child: ElevatedButton(
-              onPressed: () {
-                _joinMeeting();
-              },
-              child: Text(
-                "Join Meeting",
-                style: TextStyle(color: Colors.white),
+        children: [
+          Column(
+            children: <Widget>[
+              Container(
+                height: 180,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/background.png'),
+                        fit: BoxFit.fill)),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+                      left: 30,
+                      width: 80,
+                      height: 200,
+                      child: FadeAnimation(
+                          1,
+                          Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/light-1.png'))),
+                          )),
+                    ),
+                    Positioned(
+                      left: 140,
+                      width: 80,
+                      height: 130,
+                      child: FadeAnimation(
+                          1.3,
+                          Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/light-2.png'))),
+                          )),
+                    ),
+                    Positioned(
+                      right: 40,
+                      top: 40,
+                      width: 80,
+                      height: 150,
+                      child: FadeAnimation(
+                          1.5,
+                          Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/clock.png'))),
+                          )),
+                    ),
+                    // Positioned(
+                    //   top: 20,
+                    //   left: 30,
+                    //   child: FadeAnimation(
+                    //       1.6,
+                    //       Container(
+                    //         margin: EdgeInsets.only(top: 120),
+                    //         child: Center(
+                    //           child: Text(
+                    //             "Cource Detail",
+                    //             style: TextStyle(
+                    //                 color: Colors.deepPurple,
+                    //                 fontSize: 40,
+                    //                 fontWeight: FontWeight.bold),
+                    //           ),
+                    //         ),
+                    //       )
+                    //   )
+                    //   ,
+                    // )
+                  ],
+                ),
               ),
-              style: ButtonStyle(
-                  backgroundColor:
-                      MaterialStateColor.resolveWith((states) => Colors.blue)),
-            ),
+              Padding(
+                padding: EdgeInsets.all(30.0),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 7.0),
+                      child: Container(
+                        //margin: EdgeInsets.only(top: 120),
+                        child: Center(
+                          child: Text(
+                            "Cource Detail",
+                            style: TextStyle(
+                                color: Colors.black45,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                    FadeAnimation(
+                        1.8,
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color.fromRGBO(143, 148, 251, .2),
+                                    blurRadius: 20.0,
+                                    offset: Offset(0, 10))
+                              ]),
+                          child: Column(
+                            children: <Widget>[
+                            FadeAnimation(
+                            1.8,
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Cource Name :'),
+                                    Spacer(),
+                                    Text(globals.CourceName ?? ' Null'),
+                                  ],
+                                ),
+                              ),
+                              ),FadeAnimation(
+                                1.8,
+                              Container(
+
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Teacher Name'),
+                                    Spacer(),
+                                    Text(globals.TeacherUid ?? ' Null',style: TextStyle(fontSize: MediaQuery.of(context).size.width/40),),
+                                  ],
+                                ),
+                              ),
+                              ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Student Strength'),
+                                    Spacer(),
+                                    Text(globals.StudentStrength ?? ' Null'),
+                                  ],
+                                ),
+                              ),
+                          ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Room ID'),
+                                    Spacer(),
+                                    Text(globals.RoomId ?? ' Null'),
+                                  ],
+                                ),
+                              ),
+                          ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('CLass Start Timming'),
+                                    Spacer(),
+                                    Row(
+                                      children: [
+                                        Text(globals.StartHour  ?? ' Null'),
+                                        Text(':'+globals.Minutes ?? ' Null'),
+                                      ],
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                          ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Cource Duration '),
+                                    Spacer(),
+                                    Text(globals.CourceDuration ?? ' Null'),
+                                  ],
+                                ),
+                              ),
+    ),
+    FadeAnimation(
+    1.8,
+                              Container(
+                                height: 40,
+                                child: CheckboxListTile(
+                                  contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
+                                  title: Text("Audio Only",style: TextStyle(fontSize: 14),),
+                                  value: isAudioOnly,
+                                  onChanged: _onAudioOnlyChanged,
+                                ),
+                              ),
+    ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+                                height: 40,
+                                child: CheckboxListTile(
+                                  contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
+                                  title: Text("Audio Muted",style: TextStyle(fontSize: 14),),
+                                  value: isAudioMuted,
+                                  onChanged: _onAudioMutedChanged,
+                                ),
+                              ),
+                          ),
+                          FadeAnimation(
+                            1.8,
+                              CheckboxListTile(
+                                contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
+                                title: Text("Video Muted",style: TextStyle(fontSize: 14),),
+                                value: isVideoMuted,
+                                onChanged: _onVideoMutedChanged,
+                              ),
+                          ),
+                              // Divider(
+                              //   height: 48.0,
+                              //   thickness: 2.0,
+                              // ),
+                            ],
+                          ),
+                        )),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    FadeAnimation(
+                        2,
+                        InkWell(
+                          onTap: () {
+                            _joinMeeting(globals.RoomId);
+                          },
+                          // onTap: () {
+                          //   if (_formKey.currentState.validate()) {
+                          //     ScaffoldMessenger.of(context).showSnackBar(
+                          //       const SnackBar(
+                          //         content: Text('Processing Data'),
+                          //       ),
+                          //     );
+                          //     signup();
+                          //     Navigator.pop(context);
+                          //   }
+                          // },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: LinearGradient(colors: [
+                                  Color.fromRGBO(143, 148, 251, 1),
+                                  Color.fromRGBO(143, 148, 251, .6),
+                                ])),
+                            child: Center(
+                              child: Text(
+                                "Join Meeting",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        )),
+                  ],
+                ),
+              )
+            ],
           ),
-          SizedBox(
-            height: 48.0,
-          ),
+
+          // Container(
+          //     padding: EdgeInsets.all(5),
+          //     decoration: BoxDecoration(
+          //         color: Colors.white,
+          //         borderRadius: BorderRadius.circular(10),
+          //         boxShadow: [
+          //           BoxShadow(
+          //               color: Color.fromRGBO(143, 148, 251, .2),
+          //               blurRadius: 20.0,
+          //               offset: Offset(0, 10))
+          //         ]),
+          //     child: (Column(
+          //       children: <Widget>[
+          //         SizedBox(
+          //           height: 16.0,
+          //         ),
+          //         Container(
+          //           padding: EdgeInsets.all(8.0),
+          //           child: TextFormField(
+          //             controller: serverText,
+          //             decoration: InputDecoration(
+          //                 border: InputBorder.none,
+          //                 hintText: "Hint: Leave empty for meet.jitsi.si",
+          //                 labelText: 'Server URL',
+          //                 hintStyle: TextStyle(color: Colors.grey[400])),
+          //           ),
+          //         ),
+          //         // TextField(
+          //         //   controller: serverText,
+          //         //   decoration: InputDecoration(
+          //         //       border: OutlineInputBorder(),
+          //         //       labelText: "Server URL",
+          //         //       hintText: "Hint: Leave empty for meet.jitsi.si"),
+          //         // ),
+          //         // SizedBox(
+          //         //   height: 14.0,
+          //         // ),
+          //         Container(
+          //           padding: EdgeInsets.all(8.0),
+          //           child: TextFormField(
+          //             controller: roomText,
+          //             decoration: InputDecoration(
+          //                 border: InputBorder.none,
+          //                 hintText: "Room",
+          //                 //  labelText: 'Server URL',
+          //                 hintStyle: TextStyle(color: Colors.grey[400])),
+          //           ),
+          //         ),
+          //         // TextField(
+          //         //   controller: roomText,
+          //         //   decoration: InputDecoration(
+          //         //     border: OutlineInputBorder(),
+          //         //     labelText: "Room",
+          //         //   ),
+          //         // ),
+          //         // SizedBox(
+          //         //   height: 14.0,
+          //         // ),
+          //         Container(
+          //           padding: EdgeInsets.all(8.0),
+          //           child: TextFormField(
+          //             controller: subjectText,
+          //             decoration: InputDecoration(
+          //                 border: InputBorder.none,
+          //                 hintText: "Subject",
+          //                 hintStyle: TextStyle(color: Colors.grey[400])),
+          //           ),
+          //         ),
+          //         // TextField(
+          //         //   controller: subjectText,
+          //         //   decoration: InputDecoration(
+          //         //     border: OutlineInputBorder(),
+          //         //     labelText: "Subject",
+          //         //   ),
+          //         // ),
+          //         // SizedBox(
+          //         //   height: 14.0,
+          //         // ),
+          //         Container(
+          //           padding: EdgeInsets.all(8.0),
+          //           child: TextFormField(
+          //             controller: nameText,
+          //             decoration: InputDecoration(
+          //                 border: InputBorder.none,
+          //                 hintText: "Display Name",
+          //                 hintStyle: TextStyle(color: Colors.grey[400])),
+          //           ),
+          //         ),
+          //         // TextField(
+          //         //   controller: nameText,
+          //         //   decoration: InputDecoration(
+          //         //     border: OutlineInputBorder(),
+          //         //     labelText: "Display Name",
+          //         //   ),
+          //         // ),
+          //         // SizedBox(
+          //         //   height: 14.0,
+          //         // ),
+          //         Container(
+          //           padding: EdgeInsets.all(8.0),
+          //           child: TextFormField(
+          //             controller: emailText,
+          //             decoration: InputDecoration(
+          //                 border: InputBorder.none,
+          //                 hintText: "Email",
+          //                 hintStyle: TextStyle(color: Colors.grey[400])),
+          //           ),
+          //         ),
+          //         // TextField(
+          //         //   controller: emailText,
+          //         //   decoration: InputDecoration(
+          //         //     border: OutlineInputBorder(),
+          //         //     labelText: "Email",
+          //         //   ),
+          //         // ),
+          //         // SizedBox(
+          //         //   height: 14.0,
+          //         // ),
+          //         Container(
+          //           padding: EdgeInsets.all(8.0),
+          //           child: TextFormField(
+          //             controller: iosAppBarRGBAColor,
+          //             decoration: InputDecoration(
+          //                 border: InputBorder.none,
+          //                 hintText: "AppBar Color(IOS only)",
+          //                 hintStyle: TextStyle(color: Colors.grey[400])),
+          //           ),
+          //         ),
+          //         // TextField(
+          //         //   controller: iosAppBarRGBAColor,
+          //         //   decoration: InputDecoration(
+          //         //       border: OutlineInputBorder(),
+          //         //       labelText: "AppBar Color(IOS only)",
+          //         //       hintText: "Hint: This HAS to be in HEX RGBA format"),
+          //         // ),
+          //         // SizedBox(
+          //         //   height: 14.0,
+          //         // ),
+          //         CheckboxListTile(
+          //           title: Text("Audio Only"),
+          //           value: isAudioOnly,
+          //           onChanged: _onAudioOnlyChanged,
+          //         ),
+          //         SizedBox(
+          //           height: 4.0,
+          //         ),
+          //         CheckboxListTile(
+          //           title: Text("Audio Muted"),
+          //           value: isAudioMuted,
+          //           onChanged: _onAudioMutedChanged,
+          //         ),
+          //         SizedBox(
+          //           height: 4.0,
+          //         ),
+          //         CheckboxListTile(
+          //           title: Text("Video Muted"),
+          //           value: isVideoMuted,
+          //           onChanged: _onVideoMutedChanged,
+          //         ),
+          //         Divider(
+          //           height: 48.0,
+          //           thickness: 2.0,
+          //         ),
+          //         FadeAnimation(
+          //           1.8,
+          //           SizedBox(
+          //             height: 64.0,
+          //             width: double.maxFinite,
+          //             child: ElevatedButton(
+          //               onPressed: () {
+          //                 _joinMeeting();
+          //               },
+          //               child: Text(
+          //                 "Join Meeting",
+          //                 style: TextStyle(color: Colors.white),
+          //               ),
+          //               style: ButtonStyle(
+          //                   backgroundColor: MaterialStateColor.resolveWith(
+          //                       (states) => Colors.blue)),
+          //             ),
+          //           ),
+          //         ),
+          //         SizedBox(
+          //           height: 48.0,
+          //         ),
+          //       ],
+          //     )),
+          //   ),
         ],
       ),
     );
@@ -227,7 +656,7 @@ class _MeetingState extends State<Meeting> {
     });
   }
 
-  _joinMeeting() async {
+  _joinMeeting(String M_Id) async {
     String serverUrl = serverText.text.trim().isEmpty ? null : serverText.text;
 
     // Enable or disable any feature flag here
@@ -247,7 +676,7 @@ class _MeetingState extends State<Meeting> {
       }
     }
     // Define meetings options here
-    var options = JitsiMeetingOptions(room: roomText.text)
+    var options = JitsiMeetingOptions(room: M_Id)
       ..serverURL = serverUrl
       ..subject = subjectText.text
       ..userDisplayName = nameText.text
@@ -258,7 +687,7 @@ class _MeetingState extends State<Meeting> {
       ..videoMuted = isVideoMuted
       ..featureFlags.addAll(featureFlags)
       ..webOptions = {
-        "roomName": roomText.text,
+        "roomName": M_Id,
         "width": "100%",
         "height": "100%",
         "enableWelcomePage": false,

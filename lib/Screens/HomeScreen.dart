@@ -17,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body: SingleChildScrollView(
           child: Container(
             color: primaryColor,
-            height: MediaQuery.of(context).size.height,
+            //height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -28,13 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           image: AssetImage('assets/istambol.png'),
                           fit: BoxFit.fill)),
                 ),
-                SizedBox(
-                  height: 9,
-                ),
+
                 Padding(
-                  padding: const EdgeInsets.all(30.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
-                    height: MediaQuery.of(context).size.height / 1.6,
+                    height: MediaQuery.of(context).size.height ,
                     width: MediaQuery.of(context).size.width,
                     child: GridView.builder(
                       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
