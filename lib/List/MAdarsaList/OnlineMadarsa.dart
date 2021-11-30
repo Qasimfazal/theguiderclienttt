@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/List/MAdarsaList/MyCourceList.dart';
 import 'package:theguiderclienttt/Meeting.dart';
 import 'package:theguiderclienttt/Screens/Mycourcelist.dart';
+import 'package:theguiderclienttt/Screens/RegesterCource.dart';
 
 class OnlineMadarsalist {
   var destination;
@@ -25,7 +26,7 @@ List<OnlineMadarsalist > madarsaList = [
   OnlineMadarsalist (
     destination: 'Regester Cource',
     image: 'assets/Quran.jpeg',
-     navigation: 'joinmeeting()',
+     navigation: RegesterCourceList(),
   ),
   OnlineMadarsalist (
     destination: 'Attendance',

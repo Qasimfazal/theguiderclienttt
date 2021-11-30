@@ -28,6 +28,7 @@ class _SplashscreenState extends State<Splashscreen> {
 
   @override
   void initState() {
+    Retrive_all_teachers_Classes();
     RetrieveDataSTD();
     initi();
     super.initState();

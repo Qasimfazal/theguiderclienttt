@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/List/MAdarsaList/MyCourceList.dart';
+import 'package:theguiderclienttt/Screens/Teacher_Cource_Detail.dart';
+import 'package:theguiderclienttt/globals.dart';
 
-class courceList extends StatefulWidget {
-  const courceList({Key key}) : super(key: key);
+class RegesterCourceList extends StatefulWidget {
+ // const courceList({Key key}) : super(key: key);
 
   @override
-  _courceListState createState() => _courceListState();
+  _RegesterCourceListState createState() => _RegesterCourceListState();
 }
 
-class _courceListState extends State<courceList> {
+class _RegesterCourceListState extends State<RegesterCourceList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          // title: Text("My Cources List"),
-          ),
+         title: Text( "Cources List"),
+      ),
       body: Column(
         children: [
           Container(
@@ -22,24 +24,18 @@ class _courceListState extends State<courceList> {
             width: MediaQuery.of(context).size.width,
             child: ListView.builder(
               padding: EdgeInsets.all(5),
-              itemCount: CourceList.length,
+              itemCount: Allteachers_Uid.length,
               itemBuilder: (BuildContext ctx, index) {
                 return Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: InkWell(
                     onTap: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (BuildContext context) =>
-                              CourceList[index].navigation));
+                          builder: (BuildContext context) =>Detail_of_CourcesList()));
                     },
                     child: Container(
-                      height: 100,
+                      height: 150,
                       decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage(CourceList[index].image),
-                          fit: BoxFit.fill,
-                        ),
-                        //color: const Color(0xff7c94b6),
                         border: Border.all(
                           color: Colors.deepPurple,
                           width: 1,
@@ -55,9 +51,10 @@ class _courceListState extends State<courceList> {
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Text(CourceList[index].destination),
+                          //Text('data'),
+                          Text(Allteachers_Uid.elementAt([index].first)),
                         ],
                       ),
                     ),
