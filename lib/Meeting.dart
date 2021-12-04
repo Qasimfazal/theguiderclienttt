@@ -218,230 +218,230 @@ class _MeetingState extends State<Meeting> {
                   ],
                 ),
               ),
-    //           Padding(
-    //             padding: EdgeInsets.all(30.0),
-    //             child: Column(
-    //               children: <Widget>[
-    //                 Padding(
-    //                   padding: const EdgeInsets.only(bottom: 7.0),
-    //                   child: Container(
-    //                     //margin: EdgeInsets.only(top: 120),
-    //                     child: Center(
-    //                       child: Text(
-    //                         "Cource Detail",
-    //                         style: TextStyle(
-    //                             color: Colors.black45,
-    //                             fontSize: 30,
-    //                             fontWeight: FontWeight.bold),
-    //                       ),
-    //                     ),
-    //                   ),
-    //                 ),
-    //                 FadeAnimation(
-    //                     1.8,
-    //                     Container(
-    //                       padding: EdgeInsets.all(5),
-    //                       decoration: BoxDecoration(
-    //                           color: Colors.white,
-    //                           borderRadius: BorderRadius.circular(10),
-    //                           boxShadow: [
-    //                             BoxShadow(
-    //                                 color: Color.fromRGBO(143, 148, 251, .2),
-    //                                 blurRadius: 20.0,
-    //                                 offset: Offset(0, 10))
-    //                           ]),
-    //                       child: Column(
-    //                         children: <Widget>[
-    //                         FadeAnimation(
-    //                         1.8,
-    //                           Container(
-    //                             padding: EdgeInsets.all(8.0),
-    //                             decoration: BoxDecoration(
-    //                                 border: Border(
-    //                                     bottom: BorderSide(
-    //                                         color: Colors.grey[100]))),
-    //                             child: Row(
-    //                               children: [
-    //                                 Text('Cource Name :'),
-    //                                 Spacer(),
-    //                                 Text(globals.CourceName ?? ' Null'),
-    //                               ],
-    //                             ),
-    //                           ),
-    //                           ),FadeAnimation(
-    //                             1.8,
-    //                           Container(
-    //
-    //                             padding: EdgeInsets.all(8.0),
-    //                             decoration: BoxDecoration(
-    //                                 border: Border(
-    //                                     bottom: BorderSide(
-    //                                         color: Colors.grey[100]))),
-    //                             child: Row(
-    //                               children: [
-    //                                 Text('Teacher Name'),
-    //                                 Spacer(),
-    //                                 Text(globals.TeacherUid ?? ' Null',style: TextStyle(fontSize: MediaQuery.of(context).size.width/40),),
-    //                               ],
-    //                             ),
-    //                           ),
-    //                           ),
-    //                       FadeAnimation(
-    //                         1.8,
-    //                           Container(
-    //                             padding: EdgeInsets.all(8.0),
-    //                             decoration: BoxDecoration(
-    //                                 border: Border(
-    //                                     bottom: BorderSide(
-    //                                         color: Colors.grey[100]))),
-    //                             child: Row(
-    //                               children: [
-    //                                 Text('Student Strength'),
-    //                                 Spacer(),
-    //                                 Text(globals.StudentStrength ?? ' Null'),
-    //                               ],
-    //                             ),
-    //                           ),
-    //                       ),
-    //                       FadeAnimation(
-    //                         1.8,
-    //                           Container(
-    //                             padding: EdgeInsets.all(8.0),
-    //                             decoration: BoxDecoration(
-    //                                 border: Border(
-    //                                     bottom: BorderSide(
-    //                                         color: Colors.grey[100]))),
-    //                             child: Row(
-    //                               children: [
-    //                                 Text('Room ID'),
-    //                                 Spacer(),
-    //                                 Text(globals.RoomId ?? ' Null'),
-    //                               ],
-    //                             ),
-    //                           ),
-    //                       ),
-    //                       FadeAnimation(
-    //                         1.8,
-    //                           Container(
-    //                             padding: EdgeInsets.all(8.0),
-    //                             decoration: BoxDecoration(
-    //                                 border: Border(
-    //                                     bottom: BorderSide(
-    //                                         color: Colors.grey[100]))),
-    //                             child: Row(
-    //                               children: [
-    //                                 Text('CLass Start Timming'),
-    //                                 Spacer(),
-    //                                 Row(
-    //                                   children: [
-    //                                     Text(globals.StartHour  ?? ' Null'),
-    //                                     Text(':'+globals.Minutes ?? ' Null'),
-    //                                   ],
-    //                                 ),
-    //
-    //                               ],
-    //                             ),
-    //                           ),
-    //                       ),
-    //                       FadeAnimation(
-    //                         1.8,
-    //                           Container(
-    //
-    //                             padding: EdgeInsets.all(8.0),
-    //                             decoration: BoxDecoration(
-    //                                 border: Border(
-    //                                     bottom: BorderSide(
-    //                                         color: Colors.grey[100]))),
-    //                             child: Row(
-    //                               children: [
-    //                                 Text('Cource Duration '),
-    //                                 Spacer(),
-    //                                 Text(globals.CourceDuration ?? ' Null'),
-    //                               ],
-    //                             ),
-    //                           ),
-    // ),
-    // FadeAnimation(
-    // 1.8,
-    //                           Container(
-    //                             height: 40,
-    //                             child: CheckboxListTile(
-    //                               contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
-    //                               title: Text("Audio Only",style: TextStyle(fontSize: 14),),
-    //                               value: isAudioOnly,
-    //                               onChanged: _onAudioOnlyChanged,
-    //                             ),
-    //                           ),
-    // ),
-    //                       FadeAnimation(
-    //                         1.8,
-    //                           Container(
-    //                             height: 40,
-    //                             child: CheckboxListTile(
-    //                               contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
-    //                               title: Text("Audio Muted",style: TextStyle(fontSize: 14),),
-    //                               value: isAudioMuted,
-    //                               onChanged: _onAudioMutedChanged,
-    //                             ),
-    //                           ),
-    //                       ),
-    //                       FadeAnimation(
-    //                         1.8,
-    //                           CheckboxListTile(
-    //                             contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
-    //                             title: Text("Video Muted",style: TextStyle(fontSize: 14),),
-    //                             value: isVideoMuted,
-    //                             onChanged: _onVideoMutedChanged,
-    //                           ),
-    //                       ),
-    //                           // Divider(
-    //                           //   height: 48.0,
-    //                           //   thickness: 2.0,
-    //                           // ),
-    //                         ],
-    //                       ),
-    //                     )),
-    //                 SizedBox(
-    //                   height: 20,
-    //                 ),
-    //                 FadeAnimation(
-    //                     2,
-    //                     InkWell(
-    //                       onTap: () {
-    //                         _joinMeeting(globals.RoomId);
-    //                       },
-    //                       // onTap: () {
-    //                       //   if (_formKey.currentState.validate()) {
-    //                       //     ScaffoldMessenger.of(context).showSnackBar(
-    //                       //       const SnackBar(
-    //                       //         content: Text('Processing Data'),
-    //                       //       ),
-    //                       //     );
-    //                       //     signup();
-    //                       //     Navigator.pop(context);
-    //                       //   }
-    //                       // },
-    //                       child: Container(
-    //                         height: 50,
-    //                         decoration: BoxDecoration(
-    //                             borderRadius: BorderRadius.circular(10),
-    //                             gradient: LinearGradient(colors: [
-    //                               Color.fromRGBO(143, 148, 251, 1),
-    //                               Color.fromRGBO(143, 148, 251, .6),
-    //                             ])),
-    //                         child: Center(
-    //                           child: Text(
-    //                             "Join Meeting",
-    //                             style: TextStyle(
-    //                                 color: Colors.white,
-    //                                 fontWeight: FontWeight.bold),
-    //                           ),
-    //                         ),
-    //                       ),
-    //                     )),
-    //               ],
-    //             ),
-    //           )
+              Padding(
+                padding: EdgeInsets.all(30.0),
+                child: Column(
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 7.0),
+                      child: Container(
+                        //margin: EdgeInsets.only(top: 120),
+                        child: Center(
+                          child: Text(
+                            "Cource Detail",
+                            style: TextStyle(
+                                color: Colors.black45,
+                                fontSize: 30,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+                    FadeAnimation(
+                        1.8,
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Color.fromRGBO(143, 148, 251, .2),
+                                    blurRadius: 20.0,
+                                    offset: Offset(0, 10))
+                              ]),
+                          child: Column(
+                            children: <Widget>[
+                            FadeAnimation(
+                            1.8,
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Cource Name :'),
+                                    Spacer(),
+                                    Text(globals.CourceName ?? ' Null'),
+                                  ],
+                                ),
+                              ),
+                              ),FadeAnimation(
+                                1.8,
+                              Container(
+
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Teacher Name'),
+                                    Spacer(),
+                                    Text(globals.TeacherUid ?? ' Null',style: TextStyle(fontSize: MediaQuery.of(context).size.width/40),),
+                                  ],
+                                ),
+                              ),
+                              ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Student Strength'),
+                                    Spacer(),
+                                    Text(globals.StudentStrength ?? ' Null'),
+                                  ],
+                                ),
+                              ),
+                          ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Room ID'),
+                                    Spacer(),
+                                    Text(globals.RoomId ?? ' Null'),
+                                  ],
+                                ),
+                              ),
+                          ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('CLass Start Timming'),
+                                    Spacer(),
+                                    Row(
+                                      children: [
+                                        Text(globals.StartHour  ?? ' Null'),
+                                        Text(':'+globals.Minutes ?? ' Null'),
+                                      ],
+                                    ),
+
+                                  ],
+                                ),
+                              ),
+                          ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+
+                                padding: EdgeInsets.all(8.0),
+                                decoration: BoxDecoration(
+                                    border: Border(
+                                        bottom: BorderSide(
+                                            color: Colors.grey[100]))),
+                                child: Row(
+                                  children: [
+                                    Text('Cource Duration '),
+                                    Spacer(),
+                                    Text(globals.CourceDuration ?? ' Null'),
+                                  ],
+                                ),
+                              ),
+    ),
+    FadeAnimation(
+    1.8,
+                              Container(
+                                height: 40,
+                                child: CheckboxListTile(
+                                  contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
+                                  title: Text("Audio Only",style: TextStyle(fontSize: 14),),
+                                  value: isAudioOnly,
+                                  onChanged: _onAudioOnlyChanged,
+                                ),
+                              ),
+    ),
+                          FadeAnimation(
+                            1.8,
+                              Container(
+                                height: 40,
+                                child: CheckboxListTile(
+                                  contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
+                                  title: Text("Audio Muted",style: TextStyle(fontSize: 14),),
+                                  value: isAudioMuted,
+                                  onChanged: _onAudioMutedChanged,
+                                ),
+                              ),
+                          ),
+                          FadeAnimation(
+                            1.8,
+                              CheckboxListTile(
+                                contentPadding: EdgeInsets.only(top: 0.4,bottom: 5.4,left: 9.4),
+                                title: Text("Video Muted",style: TextStyle(fontSize: 14),),
+                                value: isVideoMuted,
+                                onChanged: _onVideoMutedChanged,
+                              ),
+                          ),
+                              // Divider(
+                              //   height: 48.0,
+                              //   thickness: 2.0,
+                              // ),
+                            ],
+                          ),
+                        )),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    FadeAnimation(
+                        2,
+                        InkWell(
+                          onTap: () {
+                            _joinMeeting(globals.RoomId);
+                          },
+                          // onTap: () {
+                          //   if (_formKey.currentState.validate()) {
+                          //     ScaffoldMessenger.of(context).showSnackBar(
+                          //       const SnackBar(
+                          //         content: Text('Processing Data'),
+                          //       ),
+                          //     );
+                          //     signup();
+                          //     Navigator.pop(context);
+                          //   }
+                          // },
+                          child: Container(
+                            height: 50,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: LinearGradient(colors: [
+                                  Color.fromRGBO(143, 148, 251, 1),
+                                  Color.fromRGBO(143, 148, 251, .6),
+                                ])),
+                            child: Center(
+                              child: Text(
+                                "Join Meeting",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          ),
+                        )),
+                  ],
+                ),
+              )
             ],
           ),
 
@@ -678,7 +678,7 @@ class _MeetingState extends State<Meeting> {
     // Define meetings options here
     var options = JitsiMeetingOptions(room: M_Id)
       ..serverURL = serverUrl
-     // ..subject = subjectText.text
+      ..subject = subjectText.text
       ..userDisplayName = nameText.text
       ..userEmail = emailText.text
       ..iosAppBarRGBAColor = iosAppBarRGBAColor.text
