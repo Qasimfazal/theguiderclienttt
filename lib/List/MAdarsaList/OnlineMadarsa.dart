@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/List/MAdarsaList/MyCourceList.dart';
 import 'package:theguiderclienttt/Meeting.dart';
-import 'package:theguiderclienttt/Screens/Mycourcelist.dart';
 import 'package:theguiderclienttt/Screens/RegesterCource.dart';
 
 class OnlineMadarsalist {
@@ -21,7 +20,7 @@ List<OnlineMadarsalist > madarsaList = [
   OnlineMadarsalist (
     destination: 'My Cources ',
     image: 'assets/OnlineMadarsa.jpeg',
-    navigation: courceList(),
+    navigation: Meeting(),
   ),
   OnlineMadarsalist (
     destination: 'Regester Cource',

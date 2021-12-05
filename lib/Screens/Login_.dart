@@ -4,6 +4,7 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:theguiderclienttt/Config.dart';
 import 'package:theguiderclienttt/Screens/HomeScreen.dart';
 import 'package:theguiderclienttt/Screens/Signup_.dart';
+import 'package:theguiderclienttt/globals.dart';
 import 'package:theguiderclienttt/widget/FadedAnimation.dart';
 
 class Login extends StatefulWidget {
@@ -54,6 +55,7 @@ class _LoginState extends State<Login> {
   void initState() {
     _email = new TextEditingController();
     _password = new TextEditingController();
+
 
     super.initState();
   }

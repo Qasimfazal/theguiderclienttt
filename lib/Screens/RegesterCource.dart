@@ -3,8 +3,10 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:theguiderclienttt/Config.dart';
+import 'package:theguiderclienttt/Screens/HomeScreen.dart';
 import 'package:theguiderclienttt/globals.dart';
 import 'package:theguiderclienttt/model/Student_Regesterd_Model.dart';
+import 'package:theguiderclienttt/widget/FadedAnimation.dart';
 
 class RegesterCourceList extends StatefulWidget {
   // const courceList({Key key}) : super(key: key);
@@ -94,145 +96,203 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
             statelist = new List<bool>();
             student_course_uidlist = new List<String>();
             student_register_cource_list= new List<Student_Regester_Cources_Model>();
+
           }
         });
       }
     });
 
   }
-
-
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Regester Cources"),
-        backgroundColor: Colors.deepPurple,
-      ),
-      body: Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: ListView.builder(
-          padding: EdgeInsets.all(20),
+      Widget ListDesign(){
+        return ListView.builder(
+          padding: EdgeInsets.all(5),
           itemCount: Regestercource.length,
           itemBuilder: (BuildContext ctx, index) {
             return Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                height: 225,
-                decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Colors.deepPurple,
-                    width: 1,
-                  ),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.deepPurpleAccent.withOpacity(0.1),
-                      spreadRadius: 2,
-                      blurRadius: 7,
-                      offset: Offset(1, 3), // changes position of shadow
-                    ),
-                  ],
-                  borderRadius: BorderRadius.circular(4),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: Column(
-                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding: const EdgeInsets.all(18.0),
+              child: Column(
+                children: <Widget>[
+                  FadeAnimation(
+                      1.8,
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color.fromRGBO(143, 148, 251, .2),
+                                  blurRadius: 20.0,
+                                  offset: Offset(0, 10))
+                            ]),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 15, right: 15, top: 15),
+                              child:  Row(
+                                children: [
+                                  Text(
+                                    'Teacher Name: ',
+                                    style: TextColour,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    R_Teacher_Name= Regestercource[index].Teacher_Name,
+                                    style: TextColour,
+                                  ),
+                                ],
+                              ),
+                            ),
 
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            'Teacher Name: ',
-                            style: TextColour,
-                          ),
-                          Spacer(),
-                          Text(
-                           R_Teacher_Name= Regestercource[index].Teacher_Name,
-                            style: TextColour,
-                          ),
-                        ],
-                      ),
-                      Divider(height: 5, thickness: 2,),
-                      Row(
-                        children: [
-                          Text(
-                            'Cource Name: ',
-                            style: TextColour,
-                          ),
-                          Spacer(),
-                          Text(
-                           R_Cource_Name= Regestercource[index].Courcename,
-                            style: TextColour,
-                          ),
-                        ],
-                      ),
-                      Divider(height: 5, thickness: 2,),
-                      Row(
-                        children: [
-                          Text(
-                            'Slot Time : ',
-                            style: TextColour,
-                          ),
-                          Spacer(),
-                          Text(
-                           R_Slot_Time= Regestercource[index].SlotTime,
-                            style: TextColour,
-                          ),
-                        ],
-                      ),
-                      Divider(height: 5, thickness: 2,),
-                      Row(
-                        children: [
-                          Text(
-                            'Day : ',
-                            style: TextColour,
-                          ),
-                          Spacer(),
-                          Text(
-                          R_Day=  Regestercource[index].Day,
-                            style: TextColour,
-                          ),
-                        ],
-                      ),
-                      Divider(height: 5, thickness: 2,),
-                      Row(
-                        children: [
-                          Text(
-                            'Student Strength : ',
-                            style: TextColour,
-                          ),
-                          Spacer(),
-                          Text(
-                           R_Student_Strength= Regestercource[index].Student_Strength,
-                            style: TextColour,
-                          ),
-                        ],
-                      ),
-                      Divider(height: 5, thickness: 2,),
-                      Row(
-                        children: [
-                          Text(
-                            'Room ID : ',
-                            style: TextColour,
-                          ),
-                          Spacer(),
-                          Text(
-                           R_Room_ID= Regestercource[index].RoomID,
-                            style: TextColour,
-                          ),
-                        ],
-                      ),
-                      Divider(height: 5, thickness: 2,),
-                      Spacer(),
+
+
+
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 15, right: 15, top: 10),
+                              child:Row(
+                                children: [
+                                  Text(
+                                    'Cource Name: ',
+                                    style: TextColour,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    R_Cource_Name= Regestercource[index].Courcename,
+                                    style: TextColour,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 15, right: 15, top: 10),
+                              child:Row(
+                                children: [
+                                  Text(
+                                    'Slot Time : ',
+                                    style: TextColour,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    R_Slot_Time= Regestercource[index].SlotTime,
+                                    style: TextColour,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 15, right: 15, top: 10),
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'Day : ',
+                                    style: TextColour,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    R_Day=  Regestercource[index].Day,
+                                    style: TextColour,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 15, right: 15, top: 10),
+                              child:Row(
+                                children: [
+                                  Text(
+                                    'Student Strength : ',
+                                    style: TextColour,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    R_Student_Strength= Regestercource[index].Student_Strength,
+                                    style: TextColour,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 15, right: 15, top: 10),
+                              child:  Row(
+                                children: [
+                                  Text(
+                                    'Room ID : ',
+                                    style: TextColour,
+                                  ),
+                                  Spacer(),
+                                  Text(
+                                    R_Room_ID= Regestercource[index].RoomID,
+                                    style: TextColour,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            // Divider(
+                            //   height: 48.0,
+                            //   thickness: 2.0,
+                            // ),
+                          ],
+                        ),
+                      )),
+                  SizedBox(
+                    height: 30,
+                  ),
+                  FadeAnimation(
+                      2,
                       InkWell(
                         onTap: (){
                           R_TUID = Regestercource[index].Teacheruid;
                           R_CID = Regestercource[index].id;
-                      //    Regester_Student_Cource();
+                          Retrive_all_student_Classes();
                         },
                         child: Container(
-                          height:50,
+                          height: 50,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10),
                               gradient: LinearGradient(colors: [
@@ -241,21 +301,104 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                               ])),
                           child: Center(
                             child: Text(
-                              "Regester Cource",
+                              "Regester ",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ),
+                      )),
+                ],
               ),
             );
           },
-        ),
+        );
+        }
+
+  Widget build(BuildContext context) {
+    return Scaffold(
+
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        child:SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 200,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/background.png'),
+                        fit: BoxFit.fill)),
+                child: Stack(
+                  children: <Widget>[
+                    Positioned(
+
+                      left: 30,
+                      width: 80,
+                      height: 200,
+                      child: FadeAnimation(
+                          1,
+                          Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/light-1.png'))),
+                          )),
+                    ),
+                    Positioned(
+                      left: 140,
+                      width: 80,
+                      height: 150,
+                      child: FadeAnimation(
+                          1.3,
+                          Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/light-2.png'))),
+                          )),
+                    ),
+                    Positioned(
+                      right: 40,
+                      top: 40,
+                      width: 80,
+                      height: 150,
+                      child: FadeAnimation(
+                          1.5,
+                          Container(
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage('assets/clock.png'))),
+                          )),
+                    ),
+                    Positioned(
+                      top: 40,
+                      left: 30,
+                      child: FadeAnimation(
+                          1.6,
+                          Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: Center(
+                              child: Text(
+                                "Regester Cources",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ),
+                          )),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                  height: MediaQuery.of(context).size.height/1.35,
+                  child: ListDesign()),
+            ],
+          ),
+        ) ,
+        
       ),
     );
   }
@@ -302,7 +445,9 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
           backgroundColor: Colors.green,
           textColor: Colors.white,
           fontSize: 16.0);
-      Navigator.pop(context);
+      Navigator.of(context).push(MaterialPageRoute(
+          builder: (BuildContext context) =>
+          HomeScreen()));
     });
   }
 }

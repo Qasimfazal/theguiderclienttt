@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TheGuiderClient',
-      // home: AddCource(),
-       home: Splashscreen(),
-     // home: Meeting(),
+
+      home: Splashscreen(),
+
     );
   }
 }

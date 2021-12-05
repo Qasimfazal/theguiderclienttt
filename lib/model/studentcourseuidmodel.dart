@@ -1,10 +1,10 @@
 class studentcourseuidmodel{
-  // String RoomID;
-  // String Courcename;
-  // String Teacher_Uid;
-  // String SlotNo;
-  // String SlotTime;
-  // String Day;
-  // String StudentStrength;
-  // String
+  String RoomID;
+  String Courcename;
+  String SlotNo;
+  String SlotTime;
+  String Day;
+  studentcourseuidmodel(
+      this.Courcename,this.SlotNo,this.SlotTime,this.RoomID,this.Day
+      );
 }

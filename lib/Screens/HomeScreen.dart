@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/Config.dart';
 import 'package:theguiderclienttt/List/homelist.dart';
+import 'package:theguiderclienttt/globals.dart';
 
 class HomeScreen extends StatefulWidget {
   //const HomeScreen({Key? key}) : super(key: key);
@@ -10,6 +11,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void initState() {
+
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -41,6 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (BuildContext ctx, index) {
                       return InkWell(
                         onTap: () {
+                          myCoursesList.clear();
+                          Student_CourceList.clear();
+                          // TODO: implement initState
+                          Retrieve_MyCourtses();
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
                                   homelist[index].navigation));
