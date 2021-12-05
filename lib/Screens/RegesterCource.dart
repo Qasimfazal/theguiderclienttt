@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:theguiderclienttt/Config.dart';
 import 'package:theguiderclienttt/Screens/HomeScreen.dart';
+import 'package:theguiderclienttt/Screens/LoadingPage.dart';
 import 'package:theguiderclienttt/globals.dart';
 import 'package:theguiderclienttt/model/Student_Regesterd_Model.dart';
 import 'package:theguiderclienttt/widget/FadedAnimation.dart';
@@ -19,36 +20,48 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
   @override
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  String R_Teacher_Name,R_Cource_Name,R_Slot_Time,R_Day,R_Student_Strength,R_Room_ID , R_TUID, R_CID;
+  String R_Teacher_Name,
+      R_Cource_Name,
+      R_Slot_Time,
+      R_Day,
+      R_Student_Strength,
+      R_Room_ID,
+      R_TUID,
+      R_CID;
   List<String> student_course_uidlist = new List<String>();
-  List<Student_Regester_Cources_Model>  student_register_cource_list = new List<Student_Regester_Cources_Model>();
-  List<bool> statelist =new List<bool>();
-
+  List<Student_Regester_Cources_Model> student_register_cource_list =
+      new List<Student_Regester_Cources_Model>();
+  List<bool> statelist = new List<bool>();
 
   void initState() {
     // TODO: implement initState
     super.initState();
-
   }
 
   void Retrive_all_student_Classes() {
     FirebaseAuth auth = FirebaseAuth.instance;
-    DatabaseReference DB_Refrance =
-    FirebaseDatabase.instance.reference().child("StudentCourse").child(auth.currentUser.uid);
+    DatabaseReference DB_Refrance = FirebaseDatabase.instance
+        .reference()
+        .child("StudentCourse")
+        .child(auth.currentUser.uid);
     DB_Refrance.once().then((DataSnapshot snapshot) {
+      student_course_uidlist.clear();
+      student_register_cource_list.clear();
       if (!snapshot.exists) {
         inputData();
-      }
-      else {
+      } else {
         Map<dynamic, dynamic> value = snapshot.value;
         Iterable childkey1 = value.keys;
         childkey1.forEach((element) {
           student_course_uidlist.add(element);
         });
-        for(int res = 0; res<student_course_uidlist.length; res++){
-          DatabaseReference DB_Reference1 =
-          FirebaseDatabase.instance.reference().child("StudentCourse").child(auth.currentUser.uid).child(student_course_uidlist.elementAt(res));
-          DB_Reference1.once().then((DataSnapshot snapshot){
+        for (int res = 0; res < student_course_uidlist.length; res++) {
+          DatabaseReference DB_Reference1 = FirebaseDatabase.instance
+              .reference()
+              .child("StudentCourse")
+              .child(auth.currentUser.uid)
+              .child(student_course_uidlist.elementAt(res));
+          DB_Reference1.once().then((DataSnapshot snapshot) {
             String cid = snapshot.key;
             String Courcename = snapshot.value["Courcename"];
             String Day = snapshot.value["Day"];
@@ -57,27 +70,28 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
             String SlotNo = snapshot.value["SlotNo"];
             String Student_Strength = snapshot.value["StudentStrength"];
             String Teacher_Uid = snapshot.value["Teacher_Uid"];
-            Student_Regester_Cources_Model srcm = new Student_Regester_Cources_Model(cid, Courcename, Day, RoomID, SlotNo, SlotTime, Student_Strength, Teacher_Uid);
+            Student_Regester_Cources_Model srcm =
+                new Student_Regester_Cources_Model(cid, Courcename, Day, RoomID,
+                    SlotNo, SlotTime, Student_Strength, Teacher_Uid);
             student_register_cource_list.add(srcm);
-
           });
         }
-        Future.delayed(Duration(seconds: 5),(){
-          for(int res =0; res<student_register_cource_list.length; res++){
+        Future.delayed(Duration(seconds: 5), () {
+          for (int res = 0; res < student_register_cource_list.length; res++) {
             String select_days = R_Day;
             String slot_time = R_Slot_Time;
-            if(student_register_cource_list.elementAt(res).SlotTime == slot_time && student_register_cource_list.elementAt(res).Day==select_days){
+            if (student_register_cource_list.elementAt(res).SlotTime ==
+                    slot_time &&
+                student_register_cource_list.elementAt(res).Day ==
+                    select_days) {
               statelist.add(true);
-            }
-            else{
+            } else {
               statelist.add(false);
-
             }
           }
-
         });
-        Future.delayed(Duration(seconds: 5),(){
-          if(statelist.contains(true)){
+        Future.delayed(Duration(seconds: 5), () {
+          if (statelist.contains(true)) {
             Fluttertoast.showToast(
                 msg: 'Clash in Class',
                 toastLength: Toast.LENGTH_SHORT,
@@ -89,240 +103,238 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
             statelist = new List<bool>();
             student_course_uidlist = new List<String>();
 
-            student_register_cource_list= new List<Student_Regester_Cources_Model>();
-          }
-          else{
+            student_register_cource_list =
+                new List<Student_Regester_Cources_Model>();
+          } else {
             inputData();
             statelist = new List<bool>();
             student_course_uidlist = new List<String>();
-            student_register_cource_list= new List<Student_Regester_Cources_Model>();
-
+            student_register_cource_list =
+                new List<Student_Regester_Cources_Model>();
           }
         });
       }
     });
-
   }
-      Widget ListDesign(){
-        return ListView.builder(
-          padding: EdgeInsets.all(5),
-          itemCount: Regestercource.length,
-          itemBuilder: (BuildContext ctx, index) {
-            return Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: Column(
-                children: <Widget>[
-                  FadeAnimation(
-                      1.8,
-                      Container(
-                        padding: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Color.fromRGBO(143, 148, 251, .2),
-                                  blurRadius: 20.0,
-                                  offset: Offset(0, 10))
-                            ]),
-                        child: Column(
-                          children: <Widget>[
-                            Container(
-                              padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 15),
-                              child:  Row(
-                                children: [
-                                  Text(
-                                    'Teacher Name: ',
-                                    style: TextColour,
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    R_Teacher_Name= Regestercource[index].Teacher_Name,
-                                    style: TextColour,
-                                  ),
-                                ],
-                              ),
-                            ),
 
-
-
-
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 10, left: 10, top: 5),
-                              child: Divider(
-                                height: 9,
-                                thickness: 1.0,
+  Widget ListDesign() {
+    return ListView.builder(
+      padding: EdgeInsets.all(5),
+      itemCount: Regestercource.length,
+      itemBuilder: (BuildContext ctx, index) {
+        return Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: Column(
+            children: <Widget>[
+              FadeAnimation(
+                  1.8,
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Color.fromRGBO(143, 148, 251, .2),
+                              blurRadius: 20.0,
+                              offset: Offset(0, 10))
+                        ]),
+                    child: Column(
+                      children: <Widget>[
+                        Container(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, top: 15),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Teacher Name: ',
+                                style: TextColour,
                               ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                              child:Row(
-                                children: [
-                                  Text(
-                                    'Cource Name: ',
-                                    style: TextColour,
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    R_Cource_Name= Regestercource[index].Courcename,
-                                    style: TextColour,
-                                  ),
-                                ],
+                              Spacer(),
+                              Text(
+                                R_Teacher_Name =
+                                    Regestercource[index].Teacher_Name,
+                                style: TextColour,
                               ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 10, left: 10, top: 5),
-                              child: Divider(
-                                height: 9,
-                                thickness: 1.0,
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                              child:Row(
-                                children: [
-                                  Text(
-                                    'Slot Time : ',
-                                    style: TextColour,
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    R_Slot_Time= Regestercource[index].SlotTime,
-                                    style: TextColour,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 10, left: 10, top: 5),
-                              child: Divider(
-                                height: 9,
-                                thickness: 1.0,
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                              child: Row(
-                                children: [
-                                  Text(
-                                    'Day : ',
-                                    style: TextColour,
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    R_Day=  Regestercource[index].Day,
-                                    style: TextColour,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 10, left: 10, top: 5),
-                              child: Divider(
-                                height: 9,
-                                thickness: 1.0,
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                              child:Row(
-                                children: [
-                                  Text(
-                                    'Student Strength : ',
-                                    style: TextColour,
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    R_Student_Strength= Regestercource[index].Student_Strength,
-                                    style: TextColour,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                  right: 10, left: 10, top: 5),
-                              child: Divider(
-                                height: 9,
-                                thickness: 1.0,
-                              ),
-                            ),
-                            Container(
-                              padding: EdgeInsets.only(
-                                  left: 15, right: 15, top: 10),
-                              child:  Row(
-                                children: [
-                                  Text(
-                                    'Room ID : ',
-                                    style: TextColour,
-                                  ),
-                                  Spacer(),
-                                  Text(
-                                    R_Room_ID= Regestercource[index].RoomID,
-                                    style: TextColour,
-                                  ),
-                                ],
-                              ),
-                            ),
-                            // Divider(
-                            //   height: 48.0,
-                            //   thickness: 2.0,
-                            // ),
-                          ],
-                        ),
-                      )),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  FadeAnimation(
-                      2,
-                      InkWell(
-                        onTap: (){
-                          R_TUID = Regestercource[index].Teacheruid;
-                          R_CID = Regestercource[index].id;
-                          Retrive_all_student_Classes();
-                        },
-                        child: Container(
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              gradient: LinearGradient(colors: [
-                                Color.fromRGBO(143, 148, 251, 1),
-                                Color.fromRGBO(143, 148, 251, .6),
-                              ])),
-                          child: Center(
-                            child: Text(
-                              "Regester ",
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                            ],
                           ),
                         ),
-                      )),
-                ],
+
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10, left: 10, top: 5),
+                          child: Divider(
+                            height: 9,
+                            thickness: 1.0,
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, top: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Cource Name: ',
+                                style: TextColour,
+                              ),
+                              Spacer(),
+                              Text(
+                                R_Cource_Name =
+                                    Regestercource[index].Courcename,
+                                style: TextColour,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10, left: 10, top: 5),
+                          child: Divider(
+                            height: 9,
+                            thickness: 1.0,
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, top: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Slot Time : ',
+                                style: TextColour,
+                              ),
+                              Spacer(),
+                              Text(
+                                R_Slot_Time = Regestercource[index].SlotTime,
+                                style: TextColour,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10, left: 10, top: 5),
+                          child: Divider(
+                            height: 9,
+                            thickness: 1.0,
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, top: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Day : ',
+                                style: TextColour,
+                              ),
+                              Spacer(),
+                              Text(
+                                R_Day = Regestercource[index].Day,
+                                style: TextColour,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10, left: 10, top: 5),
+                          child: Divider(
+                            height: 9,
+                            thickness: 1.0,
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, top: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Student Strength : ',
+                                style: TextColour,
+                              ),
+                              Spacer(),
+                              Text(
+                                R_Student_Strength =
+                                    Regestercource[index].Student_Strength,
+                                style: TextColour,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              right: 10, left: 10, top: 5),
+                          child: Divider(
+                            height: 9,
+                            thickness: 1.0,
+                          ),
+                        ),
+                        Container(
+                          padding:
+                              EdgeInsets.only(left: 15, right: 15, top: 10),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Room ID : ',
+                                style: TextColour,
+                              ),
+                              Spacer(),
+                              Text(
+                                R_Room_ID = Regestercource[index].RoomID,
+                                style: TextColour,
+                              ),
+                            ],
+                          ),
+                        ),
+                        // Divider(
+                        //   height: 48.0,
+                        //   thickness: 2.0,
+                        // ),
+                      ],
+                    ),
+                  )),
+              SizedBox(
+                height: 30,
               ),
-            );
-          },
+              FadeAnimation(
+                  2,
+                  InkWell(
+                    onTap: () {
+                      R_TUID = Regestercource[index].Teacheruid;
+                      R_CID = Regestercource[index].id;
+                      Retrive_all_student_Classes();
+                    },
+                    child: Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(colors: [
+                            Color.fromRGBO(143, 148, 251, 1),
+                            Color.fromRGBO(143, 148, 251, .6),
+                          ])),
+                      child: Center(
+                        child: Text(
+                          "Regester ",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  )),
+            ],
+          ),
         );
-        }
+      },
+    );
+  }
 
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child:SingleChildScrollView(
+        child: SingleChildScrollView(
           child: Column(
             children: [
               Container(
@@ -334,7 +346,6 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                 child: Stack(
                   children: <Widget>[
                     Positioned(
-
                       left: 30,
                       width: 80,
                       height: 200,
@@ -379,12 +390,28 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                           Container(
                             margin: EdgeInsets.only(top: 20),
                             child: Center(
-                              child: Text(
-                                "Regester Cources",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold),
+                              child: Row(
+                                children: [
+                                 IconButton(onPressed: (){
+                                   // Allteachers_Uid.clear();
+                                   // course_uid.clear();
+                                   // Allteachers_Cource_Detail.clear();
+                                   // Allteachers_Declared_variables.clear();
+                                   myCoursesList.clear();
+                                   Student_CourceList.clear();
+                                   Navigator.push(
+                                       context,
+                                       MaterialPageRoute(
+                                           builder: (context) => Loader()));
+                                 }, icon: const Icon(Icons.arrow_back),),
+                                  Text(
+                                    "Regester Cources",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ],
                               ),
                             ),
                           )),
@@ -393,33 +420,27 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                 ),
               ),
               Container(
-                  height: MediaQuery.of(context).size.height/1.35,
+                  height: MediaQuery.of(context).size.height / 1.35,
                   child: ListDesign()),
             ],
           ),
-        ) ,
-        
+        ),
       ),
     );
   }
 
   void inputData() {
-    String slotno="";
-    if(R_Slot_Time=="8:00"){
-      slotno ="1";
-
-    }
-    else if(R_Slot_Time=="9:00"){
+    String slotno = "";
+    if (R_Slot_Time == "8:00") {
+      slotno = "1";
+    } else if (R_Slot_Time == "9:00") {
       slotno = "2";
-    }
-    else if(R_Slot_Time == "10:00"){
-      slotno="3";
-    }
-    else if(R_Slot_Time =="11:00"){
+    } else if (R_Slot_Time == "10:00") {
+      slotno = "3";
+    } else if (R_Slot_Time == "11:00") {
       slotno = "4";
-    }
-    else if(R_Slot_Time =="12:00"){
-      slotno="5";
+    } else if (R_Slot_Time == "12:00") {
+      slotno = "5";
     }
 
     DatabaseReference reff = FirebaseDatabase.instance
@@ -427,16 +448,15 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
         .child("StudentCourse")
         .child(auth.currentUser.uid);
     reff.child(R_CID).set({
-
-      'RoomID' : R_Room_ID,
+      'RoomID': R_Room_ID,
       'Courcename': R_Cource_Name,
       'Teacher_Uid': R_TUID,
       'SlotNo': slotno,
-      'SlotTime':R_Slot_Time,
-      'Absents':"0",
-      'Day':R_Day,
+      'SlotTime': R_Slot_Time,
+      'Absents': "0",
+      'Day': R_Day,
       'StudentStrength': R_Student_Strength,
-    }).whenComplete((){
+    }).whenComplete(() {
       Fluttertoast.showToast(
           msg: 'Sucessfully Created',
           toastLength: Toast.LENGTH_SHORT,
@@ -445,9 +465,13 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
           backgroundColor: Colors.green,
           textColor: Colors.white,
           fontSize: 16.0);
-      Navigator.of(context).push(MaterialPageRoute(
-          builder: (BuildContext context) =>
-          HomeScreen()));
+
+      myCoursesList.clear();
+      Student_CourceList.clear();
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => Loader()));
     });
   }
 }

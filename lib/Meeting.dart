@@ -686,6 +686,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
+import 'package:theguiderclienttt/Screens/LoadingPage.dart';
 import 'package:theguiderclienttt/globals.dart';
 import 'package:theguiderclienttt/widget/FadedAnimation.dart';
 
@@ -839,12 +840,28 @@ class _MeetingState extends State<Meeting> {
                       Container(
                         margin: EdgeInsets.only(top: 20),
                         child: Center(
-                          child: Text(
-                            "My Cources",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.bold),
+                          child:Row(
+                            children: [
+                              IconButton(onPressed: (){
+                                // Allteachers_Uid.clear();
+                                // course_uid.clear();
+                                // Allteachers_Cource_Detail.clear();
+                                // Allteachers_Declared_variables.clear();
+                                myCoursesList.clear();
+                                Student_CourceList.clear();
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Loader()));
+                              }, icon: const Icon(Icons.arrow_back),),
+                              Text(
+                                "My Cources",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 22,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
                           ),
                         ),
                       )),
@@ -853,7 +870,7 @@ class _MeetingState extends State<Meeting> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height/1.35,
             child: ListView.builder(
               padding: EdgeInsets.all(5),
               itemCount: myCoursesList.length,
@@ -1001,8 +1018,10 @@ class _MeetingState extends State<Meeting> {
                           2,
                           InkWell(
                             onTap: () {
+
                               _joinMeeting(myCoursesList[index].RoomID,
                                   myCoursesList[index].Courcename);
+
                             },
                             child: Container(
                               height: 50,

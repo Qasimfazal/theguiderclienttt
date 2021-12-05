@@ -30,7 +30,7 @@ class _SplashscreenState extends State<Splashscreen> {
   void initState() {
     initi();
     Retrive_all_teachers_Classes();
-
+    Retrieve_MyCourtses();
     super.initState();
   }
 

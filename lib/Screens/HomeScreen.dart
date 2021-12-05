@@ -48,10 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     itemBuilder: (BuildContext ctx, index) {
                       return InkWell(
                         onTap: () {
-                          myCoursesList.clear();
-                          Student_CourceList.clear();
-                          // TODO: implement initState
-                          Retrieve_MyCourtses();
+
                           Navigator.of(context).push(MaterialPageRoute(
                               builder: (BuildContext context) =>
                                   homelist[index].navigation));
