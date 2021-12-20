@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/List/MAdarsaList/OnlineMadarsa.dart';
 
+import '../globals.dart';
+
 class OnlineMadarsa extends StatefulWidget {
   const OnlineMadarsa({Key key}) : super(key: key);
 
@@ -9,6 +11,16 @@ class OnlineMadarsa extends StatefulWidget {
 }
 
 class _OnlineMadarsaState extends State<OnlineMadarsa> {
+  @override
+  void initState() {
+    Regestercource.clear();
+    Allteachers_Uid.clear();
+    Allteachers_Cource_Detail.clear();
+
+    Retrive_all_teachers_Classes();
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

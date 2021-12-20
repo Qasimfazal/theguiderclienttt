@@ -1,0 +1,90 @@
+
+Showing Recent Messages
+MkDir /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    /bin/mkdir -p /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework
+
+MkDir /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Headers (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    /bin/mkdir -p /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Headers
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet.hmap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet.hmap
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-project-headers.hmap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-project-headers.hmap
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-own-target-headers.hmap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-own-target-headers.hmap
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-generated-files.hmap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-generated-files.hmap
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-all-target-headers.hmap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-all-target-headers.hmap
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-all-non-framework-target-headers.hmap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-all-non-framework-target-headers.hmap
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/all-product-headers.yaml (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/all-product-headers.yaml
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/unextended-module.modulemap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/unextended-module.modulemap
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/unextended-module-overlay.yaml (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/unextended-module-overlay.yaml
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/module.modulemap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/module.modulemap
+
+Ditto /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/module.modulemap /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Modules/module.modulemap (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/module.modulemap /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Modules
+
+CpHeader /Users/qasim/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/jitsi_meet-4.0.0/ios/Classes/JitsiMeetPlugin.h /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Headers/JitsiMeetPlugin.h (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/qasim/Documents/flutter/.pub-cache/hosted/pub.dartlang.org/jitsi_meet-4.0.0/ios/Classes/JitsiMeetPlugin.h /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Headers
+
+CpHeader /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods/Target\ Support\ Files/jitsi_meet/jitsi_meet-umbrella.h /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Headers/jitsi_meet-umbrella.h (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods/Target\ Support\ Files/jitsi_meet/jitsi_meet-umbrella.h /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Headers
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet.SwiftFileList (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet.SwiftFileList
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet-OutputFileMap.json (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet-OutputFileMap.json
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/DerivedSources/jitsi_meet_vers.c (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/DerivedSources/jitsi_meet_vers.c
+
+CompileSwiftSources normal arm64 com.apple.xcode.tools.swift.compiler (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    export DEVELOPER_DIR\=/Applications/Xcode.app/Contents/Developer
+    export SDKROOT\=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk
+    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc -incremental -module-name jitsi_meet -Onone -enable-batch-mode -enforce-exclusivity\=checked @/Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet.SwiftFileList -DDEBUG -D COCOAPODS -sdk /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.0.sdk -target arm64-apple-ios12.0 -g -module-cache-path /Users/qasim/Library/Developer/Xcode/DerivedData/ModuleCache.noindex -Xfrontend -serialize-debugging-options -enable-testing -index-store-path /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Index/DataStore -swift-version 5 -I /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet -F /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet -F /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods/JitsiMeetSDK/Frameworks -F /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/XCFrameworkIntermediates/JitsiMeetSDK -F /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/XCFrameworkIntermediates/WebRTC -c -j4 -output-file-map /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet-OutputFileMap.json -parseable-output -serialize-diagnostics -emit-dependencies -emit-module -emit-module-path /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet.swiftmodule -Xcc -I/Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/swift-overrides.hmap -Xcc -iquote -Xcc /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-generated-files.hmap -Xcc -I/Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-own-target-headers.hmap -Xcc -I/Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-all-non-framework-target-headers.hmap -Xcc -ivfsoverlay -Xcc /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/all-product-headers.yaml -Xcc -iquote -Xcc /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/jitsi_meet-project-headers.hmap -Xcc -I/Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/include -Xcc -I/Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/DerivedSources-normal/arm64 -Xcc -I/Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/DerivedSources/arm64 -Xcc -I/Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/DerivedSources -Xcc -DPOD_CONFIGURATION_DEBUG\=1 -Xcc -DDEBUG\=1 -Xcc -DCOCOAPODS\=1 -emit-objc-header -emit-objc-header-path /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet-Swift.h -import-underlying-module -Xcc -ivfsoverlay -Xcc /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/unextended-module-overlay.yaml -working-directory /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+
+Command CompileSwiftSources failed with a nonzero exit code
+
+WriteAuxiliaryFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet.LinkFileList (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    write-file /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Intermediates.noindex/Pods.build/Debug-iphoneos/jitsi_meet.build/Objects-normal/arm64/jitsi_meet.LinkFileList
+
+ProcessInfoPlistFile /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Info.plist /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods/Target\ Support\ Files/jitsi_meet/jitsi_meet-Info.plist (in target 'jitsi_meet' from project 'Pods')
+    cd /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods
+    builtin-infoPlistUtility /Users/qasim/Documents/FYP\ Final/theguiderteacherrr-master/ios/Pods/Target\ Support\ Files/jitsi_meet/jitsi_meet-Info.plist -producttype com.apple.product-type.framework -expandbuildsettings -format binary -platform iphoneos -requiredArchitecture arm64 -o /Users/qasim/Library/Developer/Xcode/DerivedData/Runner-ebickynxtuwiuddanqahltnjbtbj/Build/Products/Debug-iphoneos/jitsi_meet/jitsi_meet.framework/Info.plist
+

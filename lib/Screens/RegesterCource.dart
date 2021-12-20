@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +50,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
       student_course_uidlist.clear();
       student_register_cource_list.clear();
       if (!snapshot.exists) {
-        inputData();
+        checkCoursesStrength(R_TUID, R_CID);
       } else {
         Map<dynamic, dynamic> value = snapshot.value;
         Iterable childkey1 = value.keys;
@@ -84,6 +86,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                     slot_time &&
                 student_register_cource_list.elementAt(res).Day ==
                     select_days) {
+
               statelist.add(true);
             } else {
               statelist.add(false);
@@ -106,7 +109,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
             student_register_cource_list =
                 new List<Student_Regester_Cources_Model>();
           } else {
-            inputData();
+            checkCoursesStrength(R_TUID, R_CID);
             statelist = new List<bool>();
             student_course_uidlist = new List<String>();
             student_register_cource_list =
@@ -392,18 +395,18 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                             child: Center(
                               child: Row(
                                 children: [
-                                 IconButton(onPressed: (){
-                                   // Allteachers_Uid.clear();
-                                   // course_uid.clear();
-                                   // Allteachers_Cource_Detail.clear();
-                                   // Allteachers_Declared_variables.clear();
-                                   myCoursesList.clear();
-                                   Student_CourceList.clear();
-                                   Navigator.push(
-                                       context,
-                                       MaterialPageRoute(
-                                           builder: (context) => Loader()));
-                                 }, icon: const Icon(Icons.arrow_back),),
+                                  IconButton(
+                                    onPressed: () {
+
+                                      myCoursesList.clear();
+                                      Student_CourceList.clear();
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Loader()));
+                                    },
+                                    icon: const Icon(Icons.arrow_back),
+                                  ),
                                   Text(
                                     "Regester Cources",
                                     style: TextStyle(
@@ -455,6 +458,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
       'SlotTime': R_Slot_Time,
       'Absents': "0",
       'Day': R_Day,
+      'Present':'0',
       'StudentStrength': R_Student_Strength,
     }).whenComplete(() {
       Fluttertoast.showToast(
@@ -469,9 +473,38 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
       myCoursesList.clear();
       Student_CourceList.clear();
       Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => Loader()));
+          context, MaterialPageRoute(builder: (context) => Loader()));
+    });
+  }
+
+  void checkCoursesStrength(String tid, String cid) {
+    DatabaseReference reff = FirebaseDatabase.instance
+        .reference()
+        .child("courseSchedule")
+        .child(tid)
+        .child(cid);
+    reff.once().then((DataSnapshot snapshot) {
+      String cst = snapshot.value["StudentStrength"];
+      int cstval = int.parse(cst);
+      if (cstval != 0) {
+        cstval = cstval - 1;
+        Map<String, Object> createDoc = new HashMap();
+        createDoc['StudentStrength'] = cstval.toString();
+        reff.update(createDoc).whenComplete(() {
+
+          inputData();
+        });
+
+      }else{
+        Fluttertoast.showToast(
+            msg: 'Class Limit reached',
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.CENTER,
+            timeInSecForIosWeb: 1,
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+            fontSize: 16.0);
+      }
     });
   }
 }

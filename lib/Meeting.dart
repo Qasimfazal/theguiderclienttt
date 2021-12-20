@@ -685,10 +685,12 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:theguiderclienttt/Screens/LoadingPage.dart';
 import 'package:theguiderclienttt/globals.dart';
 import 'package:theguiderclienttt/widget/FadedAnimation.dart';
+import 'package:intl/intl.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -870,7 +872,7 @@ class _MeetingState extends State<Meeting> {
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height/1.35,
+            height: MediaQuery.of(context).size.height,
             child: ListView.builder(
               padding: EdgeInsets.all(5),
               itemCount: myCoursesList.length,
@@ -1018,10 +1020,23 @@ class _MeetingState extends State<Meeting> {
                           2,
                           InkWell(
                             onTap: () {
-
-                              _joinMeeting(myCoursesList[index].RoomID,
-                                  myCoursesList[index].Courcename);
-
+                              DateTime now = DateTime.now();
+                              String day = DateFormat('EEEE \n').format(now);
+                              String time = DateFormat('kk:mm').format(now);
+                              if(myCoursesList[index].Day==day && myCoursesList[index].SlotTime == time) {
+                                _joinMeeting(myCoursesList[index].RoomID,
+                                    myCoursesList[index].Courcename);
+                              }
+                              else{
+                                Fluttertoast.showToast(
+                                    msg: 'Too early to start the session',
+                                    toastLength: Toast.LENGTH_SHORT,
+                                    gravity: ToastGravity.CENTER,
+                                    timeInSecForIosWeb: 1,
+                                    backgroundColor: Colors.green,
+                                    textColor: Colors.white,
+                                    fontSize: 16.0);
+                              }
                             },
                             child: Container(
                               height: 50,

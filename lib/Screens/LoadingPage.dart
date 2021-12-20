@@ -23,7 +23,7 @@ class _LoaderState extends State<Loader> {
 
   initi() async {
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 2),
           () {
         navigate();
       },
