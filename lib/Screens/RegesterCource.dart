@@ -155,8 +155,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                               ),
                               Spacer(),
                               Text(
-                                R_Teacher_Name =
-                                    Regestercource[index].Teacher_Name,
+                                R_Teacher_Name = Regestercource[index].Teacher_Name,
                                 style: TextColour,
                               ),
                             ],
@@ -460,6 +459,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
       'Day': R_Day,
       'Present':'0',
       'StudentStrength': R_Student_Strength,
+      'Name':Student_Name,
     }).whenComplete(() {
       Fluttertoast.showToast(
           msg: 'Sucessfully Created',

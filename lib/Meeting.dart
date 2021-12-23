@@ -681,6 +681,7 @@
 
 import 'dart:io';
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
@@ -691,6 +692,9 @@ import 'package:theguiderclienttt/Screens/LoadingPage.dart';
 import 'package:theguiderclienttt/globals.dart';
 import 'package:theguiderclienttt/widget/FadedAnimation.dart';
 import 'package:intl/intl.dart';
+
+import 'Data/Data.dart';
+import 'model/Mycoursesmodel.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -710,23 +714,30 @@ class _MeetingState extends State<Meeting> {
   bool isAudioMuted = true;
   bool isVideoMuted = true;
   String RandomNumber = 'x';
+  var value;
 
-  void Random_Generator() {
+  void Random_Generator() async{
+   await Data.Retrieve_MyCourtses();
+    setState(() {
+
+    });
     RandomNumber = Random().nextInt(1000).toString();
     print(Text("NUmber is" + RandomNumber));
   }
-  // void Random_Generator() {
-  //   var rng = new Random();
-  //   for (var i = 0; i < 10; i++) {
-  //     print(rng.nextInt(100));
-  //     rng = RandomNumber;
-  //   }
-  // }
+
 
   @override
+  bool _loading = true;
   void initState() {
+
     super.initState();
     Random_Generator();
+    myCoursesList.clear();
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        _loading = false;
+      });
+    });
     JitsiMeet.addListener(JitsiMeetingListener(
         onConferenceWillJoin: _onConferenceWillJoin,
         onConferenceJoined: _onConferenceJoined,
@@ -742,10 +753,25 @@ class _MeetingState extends State<Meeting> {
 
   @override
   Widget build(BuildContext context) {
+    // setState(() {
+    //
+    // });
     double width = MediaQuery.of(context).size.width;
     return MaterialApp(
       home: Scaffold(
-        body: Container(
+        body:_loading ? Center(child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              //   color: Colors.red,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      color: Color.fromRGBO(143, 148, 251, .2),
+                      blurRadius: 20.0,
+                      offset: Offset(0, 10))
+                ]),
+            child: CircularProgressIndicator())) : Container(
           // padding: const EdgeInsets.symmetric(
           //   horizontal: 16.0,
           // ),
@@ -786,6 +812,9 @@ class _MeetingState extends State<Meeting> {
   }
 
   Widget meetConfig() {
+    setState(() {
+
+    });
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -801,44 +830,40 @@ class _MeetingState extends State<Meeting> {
                   left: 30,
                   width: 80,
                   height: 200,
-                  child: FadeAnimation(
-                      1,
+                  child:
                       Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/light-1.png'))),
-                      )),
+                      ),
                 ),
                 Positioned(
                   left: 140,
                   width: 80,
                   height: 150,
-                  child: FadeAnimation(
-                      1.3,
+                  child:
                       Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/light-2.png'))),
-                      )),
+                      ),
                 ),
                 Positioned(
                   right: 40,
                   top: 40,
                   width: 80,
                   height: 150,
-                  child: FadeAnimation(
-                      1.5,
+                  child:
                       Container(
                         decoration: BoxDecoration(
                             image: DecorationImage(
                                 image: AssetImage('assets/clock.png'))),
-                      )),
+                      ),
                 ),
                 Positioned(
                   top: 30,
                   left: 30,
-                  child: FadeAnimation(
-                      1.6,
+                  child:
                       Container(
                         margin: EdgeInsets.only(top: 20),
                         child: Center(
@@ -865,7 +890,6 @@ class _MeetingState extends State<Meeting> {
                               ),
                             ],
                           ),
-                        ),
                       )),
                 )
               ],
@@ -881,8 +905,7 @@ class _MeetingState extends State<Meeting> {
                   padding: const EdgeInsets.all(18.0),
                   child: Column(
                     children: <Widget>[
-                      FadeAnimation(
-                          1.8,
+
                           Container(
                             padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
@@ -1012,18 +1035,17 @@ class _MeetingState extends State<Meeting> {
                                 // ),
                               ],
                             ),
-                          )),
+                          ),
                       SizedBox(
                         height: 30,
                       ),
-                      FadeAnimation(
-                          2,
+
                           InkWell(
                             onTap: () {
                               DateTime now = DateTime.now();
-                              String day = DateFormat('EEEE \n').format(now);
-                              String time = DateFormat('kk:mm').format(now);
-                              if(myCoursesList[index].Day==day && myCoursesList[index].SlotTime == time) {
+                              String day = DateFormat('EEEE').format(now);
+                            //  String time = DateFormat('kk:mm').format(now);
+                              if(myCoursesList[index].Day==day.toString() ) {
                                 _joinMeeting(myCoursesList[index].RoomID,
                                     myCoursesList[index].Courcename);
                               }
@@ -1033,7 +1055,7 @@ class _MeetingState extends State<Meeting> {
                                     toastLength: Toast.LENGTH_SHORT,
                                     gravity: ToastGravity.CENTER,
                                     timeInSecForIosWeb: 1,
-                                    backgroundColor: Colors.green,
+                                    backgroundColor: Colors.red,
                                     textColor: Colors.white,
                                     fontSize: 16.0);
                               }
@@ -1055,7 +1077,7 @@ class _MeetingState extends State<Meeting> {
                                 ),
                               ),
                             ),
-                          )),
+                          )
                     ],
                   ),
                 );

@@ -11,17 +11,36 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool _loading = true;
   void initState() {
 
-
+    RetrieveData();
     super.initState();
+
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        _loading = false;
+      });
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(
+        body: _loading ? Center(child: Container(
+            height: 50,
+            width: 50,
+            decoration: BoxDecoration(
+              //   color: Colors.red,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                      color: Color.fromRGBO(143, 148, 251, .2),
+                      blurRadius: 20.0,
+                      offset: Offset(0, 10))
+                ]),
+            child: CircularProgressIndicator())) :Container(
           height: MediaQuery.of(context).size.height,
           child: Padding(
             padding: const EdgeInsets.only(right: 18,left: 18),
@@ -95,3 +114,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+

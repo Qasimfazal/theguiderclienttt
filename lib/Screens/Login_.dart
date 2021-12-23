@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:theguiderclienttt/Config.dart';
+import 'package:theguiderclienttt/Data/Data.dart';
 import 'package:theguiderclienttt/Screens/HomeScreen.dart';
 import 'package:theguiderclienttt/Screens/Signup_.dart';
 import 'package:theguiderclienttt/globals.dart';
@@ -19,7 +20,7 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   String email, password;
   TextEditingController _email, _password;
-
+  bool _loading = true;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
     login() async {
@@ -29,10 +30,11 @@ class _LoginState extends State<Login> {
       final FirebaseAuth auth = FirebaseAuth.instance;
       await auth
           .signInWithEmailAndPassword(email: email, password: password)
-          .then((value) {
+          .then((value) async{
         String val = value.user.uid;
         if (val.isNotEmpty) {
           print('chal raha h');
+          // await Data.Retrieve_MyCourtses();
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => HomeScreen()));
         } else {
@@ -52,22 +54,26 @@ class _LoginState extends State<Login> {
 
     }
   }
-  bool isLoading =false;
-  void startTimer() {
-    Timer.periodic(const Duration(seconds: 15), (t) {
-      setState(() {
-        isLoading = false; //set loading to false
-      });
-      t.cancel(); //stops the timer
-    });
-  }
-  @override
+  // bool isLoading =false;
+  // void startTimer() {
+  //   Timer.periodic(const Duration(seconds:2), (t) {
+  //     setState(() {
+  //       isLoading = false; //set loading to false
+  //     });
+  //     t.cancel(); //stops the timer
+  //   });
+  // }
   void initState() {
+    super.initState();
     _email = new TextEditingController();
     _password = new TextEditingController();
-
-    super.initState();
+    // Future.delayed(Duration(seconds: 3), () {
+    //   setState(() {
+    //     _loading = false;
+    //   });
+    // });
   }
+
 
 
 
@@ -167,10 +173,10 @@ class _LoginState extends State<Login> {
                                         content: Text('Processing Data'),
                                       ),
                                     );
-
-                                    Future.delayed(Duration(seconds: 8), () {
-                                      login();
-                                    });
+                                    login();
+                                    // Future.delayed(Duration(seconds: 8), () {
+                                    //
+                                    // });
                                   }
                                 },
                                 child: Container(
