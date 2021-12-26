@@ -715,7 +715,7 @@ class _MeetingState extends State<Meeting> {
     await Data.Retrieve_MyCourtses();
     setState(() {});
     RandomNumber = Random().nextInt(1000).toString();
-    print(Text("NUmber is" + RandomNumber));
+    print(Text("NUmber is " + RandomNumber));
   }
 
   @override
