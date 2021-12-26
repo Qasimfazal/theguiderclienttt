@@ -54,24 +54,11 @@ class _LoginState extends State<Login> {
 
     }
   }
-  // bool isLoading =false;
-  // void startTimer() {
-  //   Timer.periodic(const Duration(seconds:2), (t) {
-  //     setState(() {
-  //       isLoading = false; //set loading to false
-  //     });
-  //     t.cancel(); //stops the timer
-  //   });
-  // }
+
   void initState() {
     super.initState();
     _email = new TextEditingController();
     _password = new TextEditingController();
-    // Future.delayed(Duration(seconds: 3), () {
-    //   setState(() {
-    //     _loading = false;
-    //   });
-    // });
   }
 
 
@@ -91,7 +78,7 @@ class _LoginState extends State<Login> {
                       height: 400,
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: AssetImage('assets/istambol.png'),
+                              image: AssetImage( 'assets/logo5.png'),
                               fit: BoxFit.fill)),
 
                     ),
@@ -150,6 +137,7 @@ class _LoginState extends State<Login> {
                                               'passwords must have at least one special character')
                                         ]),
                                         controller: _password,
+                                        obscureText: true,
                                         decoration: InputDecoration(
                                             border: InputBorder.none,
                                             hintText: "Password",

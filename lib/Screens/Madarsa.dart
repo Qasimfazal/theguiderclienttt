@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/List/MAdarsaList/OnlineMadarsa.dart';
+import 'package:theguiderclienttt/widget/Appbar_Custom.dart';
 
 import '../globals.dart';
 
@@ -27,9 +28,10 @@ class _OnlineMadarsaState extends State<OnlineMadarsa> {
       body: Container(
         child: Column(
           children: [
-            Container(
-              height: MediaQuery.of(context).size.height,
-              width: MediaQuery.of(context).size.width,
+            GradientAppBar("Online Madarsa"),
+           Expanded(
+              // height: MediaQuery.of(context).size.height,
+              // width: MediaQuery.of(context).size.width,
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 200,

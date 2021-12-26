@@ -5,8 +5,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:theguiderclienttt/Config.dart';
-import 'package:theguiderclienttt/Screens/HomeScreen.dart';
-import 'package:theguiderclienttt/Screens/LoadingPage.dart';
 import 'package:theguiderclienttt/globals.dart';
 import 'package:theguiderclienttt/model/Student_Regesterd_Model.dart';
 import 'package:theguiderclienttt/widget/FadedAnimation.dart';
@@ -21,7 +19,7 @@ class RegesterCourceList extends StatefulWidget {
 class _RegesterCourceListState extends State<RegesterCourceList> {
   @override
   FirebaseAuth auth = FirebaseAuth.instance;
-
+  int res;
   String R_Teacher_Name,
       R_Cource_Name,
       R_Slot_Time,
@@ -40,9 +38,9 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
     super.initState();
   }
 
-  void Retrive_all_student_Classes() {
+  Future<void> RegisterCourse() async {
     FirebaseAuth auth = FirebaseAuth.instance;
-    DatabaseReference DB_Refrance = FirebaseDatabase.instance
+    DatabaseReference DB_Refrance = await FirebaseDatabase.instance
         .reference()
         .child("StudentCourse")
         .child(auth.currentUser.uid);
@@ -57,7 +55,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
         childkey1.forEach((element) {
           student_course_uidlist.add(element);
         });
-        for (int res = 0; res < student_course_uidlist.length; res++) {
+/*        for (int res = 0; res < student_course_uidlist.length; res++) {
           DatabaseReference DB_Reference1 = FirebaseDatabase.instance
               .reference()
               .child("StudentCourse")
@@ -86,7 +84,6 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                     slot_time &&
                 student_register_cource_list.elementAt(res).Day ==
                     select_days) {
-
               statelist.add(true);
             } else {
               statelist.add(false);
@@ -115,8 +112,10 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
             student_register_cource_list =
                 new List<Student_Regester_Cources_Model>();
           }
-        });
+        });*/
       }
+    }).then((value) async {
+      await fetchStudentRegistCourse();
     });
   }
 
@@ -155,7 +154,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                               ),
                               Spacer(),
                               Text(
-                                R_Teacher_Name = Regestercource[index].Teacher_Name,
+                                    Regestercource[index].Teacher_Name,
                                 style: TextColour,
                               ),
                             ],
@@ -181,8 +180,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                               ),
                               Spacer(),
                               Text(
-                                R_Cource_Name =
-                                    Regestercource[index].Courcename,
+                                Regestercource[index].Courcename,
                                 style: TextColour,
                               ),
                             ],
@@ -207,7 +205,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                               ),
                               Spacer(),
                               Text(
-                                R_Slot_Time = Regestercource[index].SlotTime,
+                                 Regestercource[index].SlotTime,
                                 style: TextColour,
                               ),
                             ],
@@ -232,7 +230,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                               ),
                               Spacer(),
                               Text(
-                                R_Day = Regestercource[index].Day,
+                                Regestercource[index].Day,
                                 style: TextColour,
                               ),
                             ],
@@ -257,8 +255,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                               ),
                               Spacer(),
                               Text(
-                                R_Student_Strength =
-                                    Regestercource[index].Student_Strength,
+                                Regestercource[index].Student_Strength,
                                 style: TextColour,
                               ),
                             ],
@@ -283,7 +280,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                               ),
                               Spacer(),
                               Text(
-                                R_Room_ID = Regestercource[index].RoomID,
+                                Regestercource[index].RoomID,
                                 style: TextColour,
                               ),
                             ],
@@ -305,7 +302,13 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                     onTap: () {
                       R_TUID = Regestercource[index].Teacheruid;
                       R_CID = Regestercource[index].id;
-                      Retrive_all_student_Classes();
+                      R_Teacher_Name = Regestercource[index].Teacher_Name;
+                      R_Room_ID = Regestercource[index].RoomID;
+                      R_Student_Strength = Regestercource[index].Student_Strength;
+                      R_Day = Regestercource[index].Day;
+                      R_Slot_Time = Regestercource[index].SlotTime;
+                      R_Cource_Name = Regestercource[index].Courcename;
+                      RegisterCourse();
                     },
                     child: Container(
                       height: 50,
@@ -394,17 +397,16 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
                             child: Center(
                               child: Row(
                                 children: [
-                                  IconButton(
-                                    onPressed: () {
-
-                                      myCoursesList.clear();
-                                      Student_CourceList.clear();
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => Loader()));
-                                    },
-                                    icon: const Icon(Icons.arrow_back),
+                                  InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Icon(
+                                        Icons.arrow_back_ios_sharp,
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    width: 3,
                                   ),
                                   Text(
                                     "Regester Cources",
@@ -457,9 +459,9 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
       'SlotTime': R_Slot_Time,
       'Absents': "0",
       'Day': R_Day,
-      'Present':'0',
+      'Present': '0',
       'StudentStrength': R_Student_Strength,
-      'Name':Student_Name,
+      'Name': Student_Name,
     }).whenComplete(() {
       Fluttertoast.showToast(
           msg: 'Sucessfully Created',
@@ -472,8 +474,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
 
       myCoursesList.clear();
       Student_CourceList.clear();
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Loader()));
+      Navigator.pop(context);
     });
   }
 
@@ -491,11 +492,9 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
         Map<String, Object> createDoc = new HashMap();
         createDoc['StudentStrength'] = cstval.toString();
         reff.update(createDoc).whenComplete(() {
-
           inputData();
         });
-
-      }else{
+      } else {
         Fluttertoast.showToast(
             msg: 'Class Limit reached',
             toastLength: Toast.LENGTH_SHORT,
@@ -506,5 +505,74 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
             fontSize: 16.0);
       }
     });
+  }
+
+  fetchStudentRegistCourse() async {
+    for (int res = 0; res < student_course_uidlist.length; res++) {
+      DatabaseReference DB_Reference1 = await FirebaseDatabase.instance
+          .reference()
+          .child("StudentCourse")
+          .child(auth.currentUser.uid)
+          .child(student_course_uidlist.elementAt(res));
+      DB_Reference1.once().then((DataSnapshot snapshot) {
+        String cid = snapshot.key;
+        String Courcename = snapshot.value["Courcename"];
+        String Day = snapshot.value["Day"];
+        String RoomID = snapshot.value["RoomID"];
+        String SlotTime = snapshot.value["SlotTime"];
+        String SlotNo = snapshot.value["SlotNo"];
+        String Student_Strength = snapshot.value["StudentStrength"];
+        String Teacher_Uid = snapshot.value["Teacher_Uid"];
+        Student_Regester_Cources_Model srcm =
+        new Student_Regester_Cources_Model(cid, Courcename, Day, RoomID,
+            SlotNo, SlotTime, Student_Strength, Teacher_Uid);
+        student_register_cource_list.add(srcm);
+      }).then((value) async {
+        await checkClashesOrNot();
+      });
+    }
+  }
+
+  checkClashesOrNot() {
+    for ( res = 0; res < student_register_cource_list.length; res++) {
+      String select_days = R_Day;
+      String slot_time = R_Slot_Time;
+      if (student_register_cource_list.elementAt(res).SlotTime ==
+          slot_time &&
+          student_register_cource_list.elementAt(res).Day ==
+              select_days) {
+        statelist.add(true);
+      } else {
+        statelist.add(false);
+      }
+    }
+    if(res == statelist.length){
+      checkClashes();
+    }
+  }
+
+  void checkClashes() {
+    if (statelist.contains(true))
+    {
+      Fluttertoast.showToast(
+          msg: 'Clash in Class',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      statelist = new List<bool>();
+      student_course_uidlist = new List<String>();
+
+      student_register_cource_list =
+      new List<Student_Regester_Cources_Model>();
+    } else {
+      checkCoursesStrength(R_TUID, R_CID);
+      statelist = new List<bool>();
+      student_course_uidlist = new List<String>();
+      student_register_cource_list =
+      new List<Student_Regester_Cources_Model>();
+    }
   }
 }

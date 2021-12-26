@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/Config.dart';
 import 'package:theguiderclienttt/List/homelist.dart';
 import 'package:theguiderclienttt/globals.dart';
+import 'package:theguiderclienttt/widget/Appbar_Custom.dart';
 
 class HomeScreen extends StatefulWidget {
   //const HomeScreen({Key? key}) : super(key: key);
@@ -26,9 +27,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: _loading ? Center(child: Container(
+    return Container(
+      color: Colors.white,
+      child: SafeArea(
+
+        child: _loading ? Center(child: Container(
             height: 50,
             width: 50,
             decoration: BoxDecoration(
@@ -40,12 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       blurRadius: 20.0,
                       offset: Offset(0, 10))
                 ]),
-            child: CircularProgressIndicator())) :Container(
-          height: MediaQuery.of(context).size.height,
-          child: Padding(
-            padding: const EdgeInsets.only(right: 18,left: 18),
+            child: CircularProgressIndicator())) :
+
+        Scaffold(
+          body: Container(
+            height: MediaQuery.of(context).size.height,
             child: Column(
               children: [
+                GradientAppBar("Welcome to Guider"),
                 Container(
                   height: 200,
                   decoration: BoxDecoration(
@@ -54,9 +59,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           fit: BoxFit.fill)),
                 ),
 
-                Container(
-                  height: MediaQuery.of(context).size.height/1.49 ,
-                  width: MediaQuery.of(context).size.width,
+                Expanded(
+
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 200,
@@ -72,34 +76,36 @@ class _HomeScreenState extends State<HomeScreen> {
                               builder: (BuildContext context) =>
                                   homelist[index].navigation));
                         },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage(homelist[index].image),
-                              fit: BoxFit.cover,
-                            ),
-                            //color: const Color(0xff7c94b6),
-                            border: Border.all(
-                              color: Colors.deepPurple,
-                              width: 1,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color:
-                                    Colors.deepPurpleAccent.withOpacity(0.1),
-                                spreadRadius: 2,
-                                blurRadius: 7,
-                                offset: Offset(
-                                    1, 3), // changes position of shadow
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(   homelist[index].image,),
+                                fit: BoxFit.cover,
                               ),
-                            ],
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(homelist[index].destination),
-                            ],
+                              //color: const Color(0xff7c94b6),
+                              border: Border.all(
+                                color: Colors.grey,
+                                width: 1,
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.45),
+                                  spreadRadius: 3,
+                                  blurRadius: 10,
+                                  offset:
+                                  Offset(1, 1), // changes position of shadow
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(homelist[index].destination),
+                              ],
+                            ),
                           ),
                         ),
                       );

@@ -47,7 +47,7 @@ class _SplashscreenState extends State<Splashscreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/Alqurankareem.jpeg'),
+                  Image.asset('assets/logo8.jpeg'),
                 ],
               ),
             ),

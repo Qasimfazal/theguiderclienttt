@@ -681,20 +681,15 @@
 
 import 'dart:io';
 import 'dart:math';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
-import 'package:theguiderclienttt/Screens/LoadingPage.dart';
 import 'package:theguiderclienttt/globals.dart';
-import 'package:theguiderclienttt/widget/FadedAnimation.dart';
 import 'package:intl/intl.dart';
 
 import 'Data/Data.dart';
-import 'model/Mycoursesmodel.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -716,20 +711,16 @@ class _MeetingState extends State<Meeting> {
   String RandomNumber = 'x';
   var value;
 
-  void Random_Generator() async{
-   await Data.Retrieve_MyCourtses();
-    setState(() {
-
-    });
+  void Random_Generator() async {
+    await Data.Retrieve_MyCourtses();
+    setState(() {});
     RandomNumber = Random().nextInt(1000).toString();
     print(Text("NUmber is" + RandomNumber));
   }
 
-
   @override
   bool _loading = true;
   void initState() {
-
     super.initState();
     Random_Generator();
     myCoursesList.clear();
@@ -759,62 +750,60 @@ class _MeetingState extends State<Meeting> {
     double width = MediaQuery.of(context).size.width;
     return MaterialApp(
       home: Scaffold(
-        body:_loading ? Center(child: Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
-              //   color: Colors.red,
-                borderRadius: BorderRadius.circular(10),
-                boxShadow: [
-                  BoxShadow(
-                      color: Color.fromRGBO(143, 148, 251, .2),
-                      blurRadius: 20.0,
-                      offset: Offset(0, 10))
-                ]),
-            child: CircularProgressIndicator())) : Container(
-          // padding: const EdgeInsets.symmetric(
-          //   horizontal: 16.0,
-          // ),
-          child: kIsWeb
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: width * 0.30,
-                      child: meetConfig(),
-                    ),
-                    Container(
-                        width: width * 0.60,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Card(
-                              color: Colors.white54,
-                              child: SizedBox(
-                                width: width * 0.60 * 0.70,
-                                height: width * 0.60 * 0.70,
-                                child: JitsiMeetConferencing(
-                                  extraJS: [
-                                    // extraJs setup example
-                                    '<script>function echo(){console.log("echo!!!")};</script>',
-                                    '<script src="https://code.jquery.com/jquery-3.5.1.slim.js"'
-                                        ' integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" '
-                                        'crossorigin="anonymous"></script>'
-                                  ],
-                                ),
-                              )),
-                        ))
-                  ],
-                )
-              : meetConfig(),
-        ),
+        body: _loading
+            ? Center(
+                child: Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(
+                        //   color: Colors.red,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              color: Color.fromRGBO(143, 148, 251, .2),
+                              blurRadius: 20.0,
+                              offset: Offset(0, 10))
+                        ]),
+                    child: CircularProgressIndicator()))
+            : Container(
+                child: kIsWeb
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            width: width * 0.30,
+                            child: meetConfig(),
+                          ),
+                          Container(
+                              width: width * 0.60,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Card(
+                                    color: Colors.white54,
+                                    child: SizedBox(
+                                      width: width * 0.60 * 0.70,
+                                      height: width * 0.60 * 0.70,
+                                      child: JitsiMeetConferencing(
+                                        extraJS: [
+                                          // extraJs setup example
+                                          '<script>function echo(){console.log("echo!!!")};</script>',
+                                          '<script src="https://code.jquery.com/jquery-3.5.1.slim.js"'
+                                              ' integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" '
+                                              'crossorigin="anonymous"></script>'
+                                        ],
+                                      ),
+                                    )),
+                              ))
+                        ],
+                      )
+                    : meetConfig(),
+              ),
       ),
     );
   }
 
   Widget meetConfig() {
-    setState(() {
-
-    });
+    setState(() {});
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
@@ -830,73 +819,78 @@ class _MeetingState extends State<Meeting> {
                   left: 30,
                   width: 80,
                   height: 200,
-                  child:
-                      Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/light-1.png'))),
-                      ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/light-1.png'))),
+                  ),
                 ),
                 Positioned(
                   left: 140,
                   width: 80,
                   height: 150,
-                  child:
-                      Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/light-2.png'))),
-                      ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/light-2.png'))),
+                  ),
                 ),
                 Positioned(
                   right: 40,
                   top: 40,
                   width: 80,
                   height: 150,
-                  child:
-                      Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage('assets/clock.png'))),
-                      ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/clock.png'))),
+                  ),
                 ),
                 Positioned(
                   top: 30,
                   left: 30,
-                  child:
-                      Container(
-                        margin: EdgeInsets.only(top: 20),
-                        child: Center(
-                          child:Row(
-                            children: [
-                              IconButton(onPressed: (){
-                                // Allteachers_Uid.clear();
-                                // course_uid.clear();
-                                // Allteachers_Cource_Detail.clear();
-                                // Allteachers_Declared_variables.clear();
-                                myCoursesList.clear();
-                                Student_CourceList.clear();
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Loader()));
-                              }, icon: const Icon(Icons.arrow_back),),
-                              Text(
-                                "My Cources",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold),
-                              ),
-                            ],
-                          ),
+                  child: Container(
+                      margin: EdgeInsets.only(top: 20),
+                      child: Center(
+                        child: Row(
+                          children: [
+                            // IconButton(
+                            //   onPressed: () {
+                            //     myCoursesList.clear();
+                            //     Student_CourceList.clear();
+                            //     Navigator.pop(context);
+                            //   },
+                            //   icon: const Icon(Icons.arrow_back),
+                            // ),
+                            InkWell(
+                                onTap: () {
+                                  // myCoursesList.clear();
+                                  // Student_CourceList.clear();
+                                  Navigator.pop(context);
+                                },
+                                child: Icon(
+                                  Icons.arrow_back_ios_sharp,
+                                  color: Colors.white,
+                                )),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              "My Cources",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
                       )),
                 )
               ],
             ),
           ),
           Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.width / 0.85,
             child: ListView.builder(
               padding: EdgeInsets.all(5),
               itemCount: myCoursesList.length,
@@ -905,179 +899,176 @@ class _MeetingState extends State<Meeting> {
                   padding: const EdgeInsets.all(18.0),
                   child: Column(
                     children: <Widget>[
-
-                          Container(
-                            padding: EdgeInsets.all(5),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromRGBO(143, 148, 251, .2),
-                                      blurRadius: 20.0,
-                                      offset: Offset(0, 10))
-                                ]),
-                            child: Column(
-                              children: <Widget>[
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 15),
-                                  child: Row(
-                                    children: [
-                                      Text('Room ID :'),
-                                      Spacer(),
-                                      Text(myCoursesList[index].RoomID),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 10, left: 10, top: 5),
-                                  child: Divider(
-                                    height: 9,
-                                    thickness: 1.0,
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 10),
-                                  child: Row(
-                                    children: [
-                                      Text('Cource Name :'),
-                                      Spacer(),
-                                      Text(myCoursesList[index].Courcename),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 10, left: 10, top: 5),
-                                  child: Divider(
-                                    height: 9,
-                                    thickness: 1.0,
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 10),
-                                  child: Row(
-                                    children: [
-                                      Text('Day :'),
-                                      Spacer(),
-                                      Text(myCoursesList[index].Day),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 10, left: 10, top: 5),
-                                  child: Divider(
-                                    height: 9,
-                                    thickness: 1.0,
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 10),
-                                  child: Row(
-                                    children: [
-                                      Text('Timming :'),
-                                      Spacer(),
-                                      Text(myCoursesList[index].SlotTime),
-                                    ],
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      right: 10, left: 10, top: 5),
-                                  child: Divider(
-                                    height: 9,
-                                    thickness: 1.0,
-                                  ),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.only(
-                                      left: 15, right: 15, top: 10,bottom: 10),
-                                  child: Row(
-                                    children: [
-                                      Text('Absence :'),
-                                      Spacer(),
-                                      Text(myCoursesList[index].Absents),
-                                    ],
-                                  ),
-                                ),
-                                CheckboxListTile(
-                                  contentPadding:
-                                      EdgeInsets.only(left: 15, right: 15),
-                                  title: Text("Audio Only"),
-                                  value: isAudioOnly,
-                                  onChanged: _onAudioOnlyChanged,
-                                ),
-
-                                CheckboxListTile(
-                                  contentPadding:
-                                      EdgeInsets.only(left: 15, right: 15),
-                                  title: Text("Audio Muted"),
-                                  value: isAudioMuted,
-                                  onChanged: _onAudioMutedChanged,
-                                ),
-
-                                CheckboxListTile(
-                                  contentPadding:
-                                      EdgeInsets.only(left: 15, right: 15),
-                                  title: Text("Video Muted"),
-                                  value: isVideoMuted,
-                                  onChanged: _onVideoMutedChanged,
-                                ),
-                                // Divider(
-                                //   height: 48.0,
-                                //   thickness: 2.0,
-                                // ),
-                              ],
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Color.fromRGBO(143, 148, 251, .2),
+                                  blurRadius: 20.0,
+                                  offset: Offset(0, 10))
+                            ]),
+                        child: Column(
+                          children: <Widget>[
+                            Container(
+                              padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 15),
+                              child: Row(
+                                children: [
+                                  Text('Room ID :'),
+                                  Spacer(),
+                                  Text(myCoursesList[index].RoomID),
+                                ],
+                              ),
                             ),
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                              child: Row(
+                                children: [
+                                  Text('Cource Name :'),
+                                  Spacer(),
+                                  Text(myCoursesList[index].Courcename),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                              child: Row(
+                                children: [
+                                  Text('Day :'),
+                                  Spacer(),
+                                  Text(myCoursesList[index].Day),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                              child: Row(
+                                children: [
+                                  Text('Timming :'),
+                                  Spacer(),
+                                  Text(myCoursesList[index].SlotTime),
+                                ],
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  right: 10, left: 10, top: 5),
+                              child: Divider(
+                                height: 9,
+                                thickness: 1.0,
+                              ),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(
+                                  left: 15, right: 15, top: 10, bottom: 10),
+                              child: Row(
+                                children: [
+                                  Text('Absence :'),
+                                  Spacer(),
+                                  Text(myCoursesList[index].Absents),
+                                ],
+                              ),
+                            ),
+                            CheckboxListTile(
+                              contentPadding:
+                                  EdgeInsets.only(left: 15, right: 15),
+                              title: Text("Audio Only"),
+                              value: isAudioOnly,
+                              onChanged: _onAudioOnlyChanged,
+                            ),
+
+                            CheckboxListTile(
+                              contentPadding:
+                                  EdgeInsets.only(left: 15, right: 15),
+                              title: Text("Audio Muted"),
+                              value: isAudioMuted,
+                              onChanged: _onAudioMutedChanged,
+                            ),
+
+                            CheckboxListTile(
+                              contentPadding:
+                                  EdgeInsets.only(left: 15, right: 15),
+                              title: Text("Video Muted"),
+                              value: isVideoMuted,
+                              onChanged: _onVideoMutedChanged,
+                            ),
+                            // Divider(
+                            //   height: 48.0,
+                            //   thickness: 2.0,
+                            // ),
+                          ],
+                        ),
+                      ),
                       SizedBox(
                         height: 30,
                       ),
-
-                          InkWell(
-                            onTap: () {
-                              DateTime now = DateTime.now();
-                              String day = DateFormat('EEEE').format(now);
-                            //  String time = DateFormat('kk:mm').format(now);
-                              if(myCoursesList[index].Day==day.toString() ) {
-                                _joinMeeting(myCoursesList[index].RoomID,
-                                    myCoursesList[index].Courcename);
-                              }
-                              else{
-                                Fluttertoast.showToast(
-                                    msg: 'Too early to start the session',
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.CENTER,
-                                    timeInSecForIosWeb: 1,
-                                    backgroundColor: Colors.red,
-                                    textColor: Colors.white,
-                                    fontSize: 16.0);
-                              }
-                            },
-                            child: Container(
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  gradient: LinearGradient(colors: [
-                                    Color.fromRGBO(143, 148, 251, 1),
-                                    Color.fromRGBO(143, 148, 251, .6),
-                                  ])),
-                              child: Center(
-                                child: Text(
-                                  "Join Meeting",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
+                      InkWell(
+                        onTap: () {
+                          DateTime now = DateTime.now();
+                          String day = DateFormat('EEEE').format(now);
+                          //  String time = DateFormat('kk:mm').format(now);
+                          if (myCoursesList[index].Day == day.toString()) {
+                            _joinMeeting(myCoursesList[index].RoomID,
+                                myCoursesList[index].Courcename);
+                          } else {
+                            Fluttertoast.showToast(
+                                msg: 'Too early to start the session',
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.CENTER,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0);
+                          }
+                        },
+                        child: Container(
+                          height: 50,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              gradient: LinearGradient(colors: [
+                                Color.fromRGBO(143, 148, 251, 1),
+                                Color.fromRGBO(143, 148, 251, .6),
+                              ])),
+                          child: Center(
+                            child: Text(
+                              "Join Meeting",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold),
                             ),
-                          )
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 );
