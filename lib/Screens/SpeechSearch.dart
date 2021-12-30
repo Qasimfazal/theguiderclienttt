@@ -176,7 +176,7 @@ class _SpeechSearchState extends State<SpeechSearch> {
 
   void searchOperation(String _text) {
 
-    //  if (_isSearch != null) {
+    //  if (_isSearch != null) {.
     for (int i = 0; i < Search.length; i++) {
       String data = Search.elementAt(i);
       if (data.toLowerCase().contains(_text.toLowerCase())) {
