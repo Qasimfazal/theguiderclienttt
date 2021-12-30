@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/Meeting.dart';
 import 'package:theguiderclienttt/Screens/Madarsa.dart';
+import 'package:theguiderclienttt/Screens/SpeechSearch.dart';
 
 class HomeList {
   var destination;
@@ -25,6 +26,10 @@ List<HomeList> homelist = [
     destination: 'Full Quran',
     image: 'assets/Quran.jpeg',
     navigation: 'joinmeeting()',
+  ),  HomeList(
+    destination: 'Audio Quran Search',
+    image: 'assets/Quran.jpeg',
+    navigation: SpeechSearch(),
   ),
   HomeList(
     destination: 'Quran Audio',
