@@ -55,64 +55,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
         childkey1.forEach((element) {
           student_course_uidlist.add(element);
         });
-/*        for (int res = 0; res < student_course_uidlist.length; res++) {
-          DatabaseReference DB_Reference1 = FirebaseDatabase.instance
-              .reference()
-              .child("StudentCourse")
-              .child(auth.currentUser.uid)
-              .child(student_course_uidlist.elementAt(res));
-          DB_Reference1.once().then((DataSnapshot snapshot) {
-            String cid = snapshot.key;
-            String Courcename = snapshot.value["Courcename"];
-            String Day = snapshot.value["Day"];
-            String RoomID = snapshot.value["RoomID"];
-            String SlotTime = snapshot.value["SlotTime"];
-            String SlotNo = snapshot.value["SlotNo"];
-            String Student_Strength = snapshot.value["StudentStrength"];
-            String Teacher_Uid = snapshot.value["Teacher_Uid"];
-            Student_Regester_Cources_Model srcm =
-                new Student_Regester_Cources_Model(cid, Courcename, Day, RoomID,
-                    SlotNo, SlotTime, Student_Strength, Teacher_Uid);
-            student_register_cource_list.add(srcm);
-          });
-        }
-        Future.delayed(Duration(seconds: 5), () {
-          for (int res = 0; res < student_register_cource_list.length; res++) {
-            String select_days = R_Day;
-            String slot_time = R_Slot_Time;
-            if (student_register_cource_list.elementAt(res).SlotTime ==
-                    slot_time &&
-                student_register_cource_list.elementAt(res).Day ==
-                    select_days) {
-              statelist.add(true);
-            } else {
-              statelist.add(false);
-            }
-          }
-        });
-        Future.delayed(Duration(seconds: 5), () {
-          if (statelist.contains(true)) {
-            Fluttertoast.showToast(
-                msg: 'Clash in Class',
-                toastLength: Toast.LENGTH_SHORT,
-                gravity: ToastGravity.CENTER,
-                timeInSecForIosWeb: 1,
-                backgroundColor: Colors.red,
-                textColor: Colors.white,
-                fontSize: 16.0);
-            statelist = new List<bool>();
-            student_course_uidlist = new List<String>();
 
-            student_register_cource_list =
-                new List<Student_Regester_Cources_Model>();
-          } else {
-            checkCoursesStrength(R_TUID, R_CID);
-            statelist = new List<bool>();
-            student_course_uidlist = new List<String>();
-            student_register_cource_list =
-                new List<Student_Regester_Cources_Model>();
-          }
-        });*/
       }
     }).then((value) async {
       await fetchStudentRegistCourse();

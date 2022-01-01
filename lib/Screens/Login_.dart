@@ -101,6 +101,7 @@ class _LoginState extends State<Login> {
                                     ]),
                                 child: Column(
                                   children: [
+                                    Text('The Guider Client',style: TextStyle(color: Color.fromRGBO(143, 148, 251, 1),fontWeight: FontWeight.bold,fontSize: 20),),
                                     Container(
                                       padding: EdgeInsets.all(8.0),
                                       decoration: BoxDecoration(
