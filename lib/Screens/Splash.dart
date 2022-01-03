@@ -37,7 +37,7 @@ class _SplashscreenState extends State<Splashscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.white,
-        body: Container(
+        body:  Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           color: Colors.white,
@@ -47,7 +47,7 @@ class _SplashscreenState extends State<Splashscreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset('assets/logo8.jpeg'),
+                  Image.asset('assets/Alqurankareem.jpeg'),
                 ],
               ),
             ),

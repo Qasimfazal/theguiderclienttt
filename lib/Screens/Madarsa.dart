@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:theguiderclienttt/Data/Data.dart';
 import 'package:theguiderclienttt/List/MAdarsaList/OnlineMadarsa.dart';
 import 'package:theguiderclienttt/widget/Appbar_Custom.dart';
 
@@ -17,8 +18,9 @@ class _OnlineMadarsaState extends State<OnlineMadarsa> {
     Regestercource.clear();
     Allteachers_Uid.clear();
     Allteachers_Cource_Detail.clear();
-
     Retrive_all_teachers_Classes();
+Data.Retrieve_MyCourtses();
+   // DataR.Retrive_all_teachers_Classes();
     // TODO: implement initState
     super.initState();
   }
@@ -28,13 +30,81 @@ class _OnlineMadarsaState extends State<OnlineMadarsa> {
       body: Container(
         child: Column(
           children: [
-            GradientAppBar("Online Madarsa"),
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/background.png'),
+                      fit: BoxFit.fill)),
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                      left: 30,
+                      width: 80,
+                      height: 200,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage('assets/light-1.png'))),
+                      )),
+                  Positioned(
+                    left: 140,
+                    width: 80,
+                    height: 150,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/light-2.png'))),
+                    ),
+                  ),
+                  Positioned(
+                    right: 40,
+                    top: 40,
+                    width: 80,
+                    height: 150,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage('assets/clock.png'))),
+                    ),
+                  ),
+                  Positioned(
+                      top: 30,
+                      left: 30,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 20),
+                        child: Center(
+                          child: Row(
+                            children: [
+                              InkWell(
+                                  onTap: () {
+                                   Navigator.pop(context);
+                                  },
+                                  child:Icon(
+                                    Icons.arrow_back_ios_sharp,
+                                    color: Colors.white,
+                                  )),
+                              SizedBox(
+                                width: 25,
+                              ),
+                              //   Text('Teacher Portal',style: TextStyle(color: Colors.white,fontSize: 28,fontWeight: FontWeight.w300),)
+                            ],
+                          ),
+                        ),
+                      )),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Text('Online Madarsa',style: TextStyle(fontSize: 28,fontWeight: FontWeight.w300),),
+            ),
            Expanded(
               // height: MediaQuery.of(context).size.height,
               // width: MediaQuery.of(context).size.width,
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                    maxCrossAxisExtent: 200,
+                    maxCrossAxisExtent: 300,
                     //childAspectRatio: (itemWidth / itemHeight),
                     crossAxisSpacing: 1,
                     mainAxisSpacing: 1),
@@ -70,7 +140,7 @@ class _OnlineMadarsaState extends State<OnlineMadarsa> {
                                   1, 3), // changes position of shadow
                             ),
                           ],
-                          borderRadius: BorderRadius.circular(4),
+                          borderRadius: BorderRadius.circular(30),
                         ),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.end,

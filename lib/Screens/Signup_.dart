@@ -39,7 +39,7 @@ class _SignupState extends State<Signup> {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 400,
+                  height: 200,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: AssetImage('assets/background.png'),
@@ -84,21 +84,29 @@ class _SignupState extends State<Signup> {
                             )),
                       ),
                       Positioned(
-                        child: FadeAnimation(
-                            1.6,
-                            Container(
-                              margin: EdgeInsets.only(top: 50),
-                              child: Center(
-                                child: Text(
-                                  "Signup",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 40,
-                                      fontWeight: FontWeight.bold),
-                                ),
+                          top: 30,
+                          left: 30,
+                          child: Container(
+                            margin: EdgeInsets.only(top: 20),
+                            child: Center(
+                              child: Row(
+                                children: [
+                                  InkWell(
+                                      onTap: () {
+                                       Navigator.pop(context);
+                                      },
+                                      child:Icon(
+                                        Icons.arrow_back_ios_sharp,
+                                        color: Colors.white,
+                                      )),
+                                  SizedBox(
+                                    width: 25,
+                                  ),
+                                  //   Text('Teacher Portal',style: TextStyle(color: Colors.white,fontSize: 28,fontWeight: FontWeight.w300),)
+                                ],
                               ),
-                            )),
-                      )
+                            ),
+                          )),
                     ],
                   ),
                 ),
@@ -106,6 +114,10 @@ class _SignupState extends State<Signup> {
                   padding: EdgeInsets.all(30.0),
                   child: Column(
                     children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 15.0),
+                        child: Text('Sign up',style: TextStyle(color: Colors.black,fontSize: 28,fontWeight: FontWeight.w300),),
+                      ),
                       FadeAnimation(
                           1.8,
                           Container(
@@ -223,6 +235,7 @@ class _SignupState extends State<Signup> {
                       ),
                       FadeAnimation(
                           2,
+
                           InkWell(
                             onTap: () {
                               if (_formKey.currentState.validate()) {

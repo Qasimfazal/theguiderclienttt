@@ -36,6 +36,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    RegisterCourse();
   }
 
   Future<void> RegisterCourse() async {
@@ -62,315 +63,518 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
     });
   }
 
-  Widget ListDesign() {
-    return ListView.builder(
-      padding: EdgeInsets.all(5),
-      itemCount: Regestercource.length,
-      itemBuilder: (BuildContext ctx, index) {
-        return Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Column(
-            children: <Widget>[
-              FadeAnimation(
-                  1.8,
-                  Container(
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Color.fromRGBO(143, 148, 251, .2),
-                              blurRadius: 20.0,
-                              offset: Offset(0, 10))
-                        ]),
-                    child: Column(
-                      children: <Widget>[
-                        Container(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 15, top: 15),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Teacher Name: ',
-                                style: TextColour,
-                              ),
-                              Spacer(),
-                              Text(
-                                    Regestercource[index].Teacher_Name,
-                                style: TextColour,
-                              ),
-                            ],
-                          ),
-                        ),
-
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              right: 10, left: 10, top: 5),
-                          child: Divider(
-                            height: 9,
-                            thickness: 1.0,
-                          ),
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 15, top: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Cource Name: ',
-                                style: TextColour,
-                              ),
-                              Spacer(),
-                              Text(
-                                Regestercource[index].Courcename,
-                                style: TextColour,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              right: 10, left: 10, top: 5),
-                          child: Divider(
-                            height: 9,
-                            thickness: 1.0,
-                          ),
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 15, top: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Slot Time : ',
-                                style: TextColour,
-                              ),
-                              Spacer(),
-                              Text(
-                                 Regestercource[index].SlotTime,
-                                style: TextColour,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              right: 10, left: 10, top: 5),
-                          child: Divider(
-                            height: 9,
-                            thickness: 1.0,
-                          ),
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 15, top: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Day : ',
-                                style: TextColour,
-                              ),
-                              Spacer(),
-                              Text(
-                                Regestercource[index].Day,
-                                style: TextColour,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              right: 10, left: 10, top: 5),
-                          child: Divider(
-                            height: 9,
-                            thickness: 1.0,
-                          ),
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 15, top: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Student Strength : ',
-                                style: TextColour,
-                              ),
-                              Spacer(),
-                              Text(
-                                Regestercource[index].Student_Strength,
-                                style: TextColour,
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              right: 10, left: 10, top: 5),
-                          child: Divider(
-                            height: 9,
-                            thickness: 1.0,
-                          ),
-                        ),
-                        Container(
-                          padding:
-                              EdgeInsets.only(left: 15, right: 15, top: 10),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Room ID : ',
-                                style: TextColour,
-                              ),
-                              Spacer(),
-                              Text(
-                                Regestercource[index].RoomID,
-                                style: TextColour,
-                              ),
-                            ],
-                          ),
-                        ),
-                        // Divider(
-                        //   height: 48.0,
-                        //   thickness: 2.0,
-                        // ),
-                      ],
-                    ),
-                  )),
-              SizedBox(
-                height: 30,
-              ),
-              FadeAnimation(
-                  2,
-                  InkWell(
-                    onTap: () {
-                      R_TUID = Regestercource[index].Teacheruid;
-                      R_CID = Regestercource[index].id;
-                      R_Teacher_Name = Regestercource[index].Teacher_Name;
-                      R_Room_ID = Regestercource[index].RoomID;
-                      R_Student_Strength = Regestercource[index].Student_Strength;
-                      R_Day = Regestercource[index].Day;
-                      R_Slot_Time = Regestercource[index].SlotTime;
-                      R_Cource_Name = Regestercource[index].Courcename;
-                      RegisterCourse();
-                    },
-                    child: Container(
-                      height: 50,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          gradient: LinearGradient(colors: [
-                            Color.fromRGBO(143, 148, 251, 1),
-                            Color.fromRGBO(143, 148, 251, .6),
-                          ])),
-                      child: Center(
-                        child: Text(
-                          "Regester ",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  )),
-            ],
-          ),
-        );
-      },
-    );
-  }
+  // Widget ListDesign() {
+  //   return ListView.builder(
+  //     padding: EdgeInsets.all(5),
+  //     itemCount: Regestercource.length,
+  //     itemBuilder: (BuildContext ctx, index) {
+  //       return Padding(
+  //         padding: const EdgeInsets.all(18.0),
+  //         child: Column(
+  //           children: <Widget>[
+  //             FadeAnimation(
+  //                 1.8,
+  //                 Container(
+  //                   padding: EdgeInsets.all(5),
+  //                   decoration: BoxDecoration(
+  //                       color: Colors.white,
+  //                       borderRadius: BorderRadius.circular(10),
+  //                       boxShadow: [
+  //                         BoxShadow(
+  //                             color: Color.fromRGBO(143, 148, 251, .2),
+  //                             blurRadius: 20.0,
+  //                             offset: Offset(0, 10))
+  //                       ]),
+  //                   child: Column(
+  //                     children: <Widget>[
+  //                       Container(
+  //                         padding:
+  //                             EdgeInsets.only(left: 15, right: 15, top: 15),
+  //                         child: Row(
+  //                           children: [
+  //                             Text(
+  //                               'Teacher Name: ',
+  //                               style: TextColour,
+  //                             ),
+  //                             Spacer(),
+  //                             Text(
+  //                                   Regestercource[index].Teacher_Name,
+  //                               style: TextColour,
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ),
+  //
+  //                       Padding(
+  //                         padding: const EdgeInsets.only(
+  //                             right: 10, left: 10, top: 5),
+  //                         child: Divider(
+  //                           height: 9,
+  //                           thickness: 1.0,
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                         padding:
+  //                             EdgeInsets.only(left: 15, right: 15, top: 10),
+  //                         child: Row(
+  //                           children: [
+  //                             Text(
+  //                               'Cource Name: ',
+  //                               style: TextColour,
+  //                             ),
+  //                             Spacer(),
+  //                             Text(
+  //                               Regestercource[index].Courcename,
+  //                               style: TextColour,
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ),
+  //                       Padding(
+  //                         padding: const EdgeInsets.only(
+  //                             right: 10, left: 10, top: 5),
+  //                         child: Divider(
+  //                           height: 9,
+  //                           thickness: 1.0,
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                         padding:
+  //                             EdgeInsets.only(left: 15, right: 15, top: 10),
+  //                         child: Row(
+  //                           children: [
+  //                             Text(
+  //                               'Slot Time : ',
+  //                               style: TextColour,
+  //                             ),
+  //                             Spacer(),
+  //                             Text(
+  //                                Regestercource[index].SlotTime,
+  //                               style: TextColour,
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ),
+  //                       Padding(
+  //                         padding: const EdgeInsets.only(
+  //                             right: 10, left: 10, top: 5),
+  //                         child: Divider(
+  //                           height: 9,
+  //                           thickness: 1.0,
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                         padding:
+  //                             EdgeInsets.only(left: 15, right: 15, top: 10),
+  //                         child: Row(
+  //                           children: [
+  //                             Text(
+  //                               'Day : ',
+  //                               style: TextColour,
+  //                             ),
+  //                             Spacer(),
+  //                             Text(
+  //                               Regestercource[index].Day,
+  //                               style: TextColour,
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ),
+  //                       Padding(
+  //                         padding: const EdgeInsets.only(
+  //                             right: 10, left: 10, top: 5),
+  //                         child: Divider(
+  //                           height: 9,
+  //                           thickness: 1.0,
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                         padding:
+  //                             EdgeInsets.only(left: 15, right: 15, top: 10),
+  //                         child: Row(
+  //                           children: [
+  //                             Text(
+  //                               'Student Strength : ',
+  //                               style: TextColour,
+  //                             ),
+  //                             Spacer(),
+  //                             Text(
+  //                               Regestercource[index].Student_Strength,
+  //                               style: TextColour,
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ),
+  //                       Padding(
+  //                         padding: const EdgeInsets.only(
+  //                             right: 10, left: 10, top: 5),
+  //                         child: Divider(
+  //                           height: 9,
+  //                           thickness: 1.0,
+  //                         ),
+  //                       ),
+  //                       Container(
+  //                         padding:
+  //                             EdgeInsets.only(left: 15, right: 15, top: 10),
+  //                         child: Row(
+  //                           children: [
+  //                             Text(
+  //                               'Room ID : ',
+  //                               style: TextColour,
+  //                             ),
+  //                             Spacer(),
+  //                             Text(
+  //                               Regestercource[index].RoomID,
+  //                               style: TextColour,
+  //                             ),
+  //                           ],
+  //                         ),
+  //                       ),
+  //                       // Divider(
+  //                       //   height: 48.0,
+  //                       //   thickness: 2.0,
+  //                       // ),
+  //                     ],
+  //                   ),
+  //                 )),
+  //             SizedBox(
+  //               height: 30,
+  //             ),
+  //             FadeAnimation(
+  //                 2,
+  //                 InkWell(
+  //                   onTap: () {
+  //                     R_TUID = Regestercource[index].Teacheruid;
+  //                     R_CID = Regestercource[index].id;
+  //                     R_Teacher_Name = Regestercource[index].Teacher_Name;
+  //                     R_Room_ID = Regestercource[index].RoomID;
+  //                     R_Student_Strength = Regestercource[index].Student_Strength;
+  //                     R_Day = Regestercource[index].Day;
+  //                     R_Slot_Time = Regestercource[index].SlotTime;
+  //                     R_Cource_Name = Regestercource[index].Courcename;
+  //                     RegisterCourse();
+  //                   },
+  //                   child: Container(
+  //                     height: 50,
+  //                     decoration: BoxDecoration(
+  //                         borderRadius: BorderRadius.circular(10),
+  //                         gradient: LinearGradient(colors: [
+  //                           Color.fromRGBO(143, 148, 251, 1),
+  //                           Color.fromRGBO(143, 148, 251, .6),
+  //                         ])),
+  //                     child: Center(
+  //                       child: Text(
+  //                         "Regester ",
+  //                         style: TextStyle(
+  //                             color: Colors.white, fontWeight: FontWeight.bold),
+  //                       ),
+  //                     ),
+  //                   ),
+  //                 )),
+  //           ],
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
 
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 200,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/background.png'),
-                        fit: BoxFit.fill)),
-                child: Stack(
-                  children: <Widget>[
-                    Positioned(
-                      left: 30,
-                      width: 80,
-                      height: 200,
-                      child: FadeAnimation(
-                          1,
+        child: Column(
+          children: [
+
+            Container(
+              height: 200,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/background.png'),
+                      fit: BoxFit.fill)),
+              child: Stack(
+                children: <Widget>[
+                  Positioned(
+                    left: 30,
+                    width: 80,
+                    height: 200,
+                    child: FadeAnimation(
+                        1,
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('assets/light-1.png'))),
+                        )),
+                  ),
+                  Positioned(
+                    left: 140,
+                    width: 80,
+                    height: 150,
+                    child: FadeAnimation(
+                        1.3,
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('assets/light-2.png'))),
+                        )),
+                  ),
+                  Positioned(
+                    right: 40,
+                    top: 40,
+                    width: 80,
+                    height: 150,
+                    child: FadeAnimation(
+                        1.5,
+                        Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage('assets/clock.png'))),
+                        )),
+                  ),
+                  Positioned(
+                    top: 40,
+                    left: 30,
+                    child: FadeAnimation(
+                        1.6,
+                        Container(
+                          margin: EdgeInsets.only(top: 20),
+                          child: Center(
+                            child: Row(
+                              children: [
+                                InkWell(
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: Icon(
+                                      Icons.arrow_back_ios_sharp,
+                                      color: Colors.white,
+                                    )),
+
+                              ],
+                            ),
+                          ),
+                        )),
+                  )
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(0.0),
+              child: Text('Register Courses',style: TextStyle(color: Colors.black,fontSize: 28,fontWeight: FontWeight.w300),),
+            ),
+            Expanded(child:  ListView.builder(
+              padding: EdgeInsets.all(5),
+              itemCount: Regestercource.length,
+              itemBuilder: (BuildContext ctx, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(18.0),
+                  child: Column(
+                    children: <Widget>[
+                      FadeAnimation(
+                          1.8,
                           Container(
+                            padding: EdgeInsets.all(5),
                             decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('assets/light-1.png'))),
-                          )),
-                    ),
-                    Positioned(
-                      left: 140,
-                      width: 80,
-                      height: 150,
-                      child: FadeAnimation(
-                          1.3,
-                          Container(
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('assets/light-2.png'))),
-                          )),
-                    ),
-                    Positioned(
-                      right: 40,
-                      top: 40,
-                      width: 80,
-                      height: 150,
-                      child: FadeAnimation(
-                          1.5,
-                          Container(
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('assets/clock.png'))),
-                          )),
-                    ),
-                    Positioned(
-                      top: 40,
-                      left: 30,
-                      child: FadeAnimation(
-                          1.6,
-                          Container(
-                            margin: EdgeInsets.only(top: 20),
-                            child: Center(
-                              child: Row(
-                                children: [
-                                  InkWell(
-                                      onTap: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: Icon(
-                                        Icons.arrow_back_ios_sharp,
-                                        color: Colors.white,
-                                      )),
-                                  SizedBox(
-                                    width: 3,
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(10),
+                                boxShadow: [
+                                  BoxShadow(
+                                      color: Color.fromRGBO(143, 148, 251, .2),
+                                      blurRadius: 20.0,
+                                      offset: Offset(0, 10))
+                                ]),
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 15),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Teacher Name: ',
+                                        style: TextColour,
+                                      ),
+                                      Spacer(),
+                                      Text(
+                                        Regestercource[index].Teacher_Name,
+                                        style: TextColour,
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    "Regester Cources",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 22,
-                                        fontWeight: FontWeight.bold),
+                                ),
+
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 10, left: 10, top: 5),
+                                  child: Divider(
+                                    height: 9,
+                                    thickness: 1.0,
                                   ),
-                                ],
+                                ),
+                                Container(
+                                  padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Cource Name: ',
+                                        style: TextColour,
+                                      ),
+                                      Spacer(),
+                                      Text(
+                                        Regestercource[index].Courcename,
+                                        style: TextColour,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 10, left: 10, top: 5),
+                                  child: Divider(
+                                    height: 9,
+                                    thickness: 1.0,
+                                  ),
+                                ),
+                                Container(
+                                  padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Slot Time : ',
+                                        style: TextColour,
+                                      ),
+                                      Spacer(),
+                                      Text(
+                                        Regestercource[index].SlotTime,
+                                        style: TextColour,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 10, left: 10, top: 5),
+                                  child: Divider(
+                                    height: 9,
+                                    thickness: 1.0,
+                                  ),
+                                ),
+                                Container(
+                                  padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Day : ',
+                                        style: TextColour,
+                                      ),
+                                      Spacer(),
+                                      Text(
+                                        Regestercource[index].Day,
+                                        style: TextColour,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 10, left: 10, top: 5),
+                                  child: Divider(
+                                    height: 9,
+                                    thickness: 1.0,
+                                  ),
+                                ),
+                                Container(
+                                  padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Student Strength : ',
+                                        style: TextColour,
+                                      ),
+                                      Spacer(),
+                                      Text(
+                                        Regestercource[index].Student_Strength,
+                                        style: TextColour,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      right: 10, left: 10, top: 5),
+                                  child: Divider(
+                                    height: 9,
+                                    thickness: 1.0,
+                                  ),
+                                ),
+                                Container(
+                                  padding:
+                                  EdgeInsets.only(left: 15, right: 15, top: 10),
+                                  child: Row(
+                                    children: [
+                                      Text(
+                                        'Room ID : ',
+                                        style: TextColour,
+                                      ),
+                                      Spacer(),
+                                      Text(
+                                        Regestercource[index].RoomID,
+                                        style: TextColour,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                // Divider(
+                                //   height: 48.0,
+                                //   thickness: 2.0,
+                                // ),
+                              ],
+                            ),
+                          )),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      FadeAnimation(
+                          2,
+                          InkWell(
+                            onTap: () {
+                              R_TUID = Regestercource[index].Teacheruid;
+                              R_CID = Regestercource[index].id;
+                              R_Teacher_Name = Regestercource[index].Teacher_Name;
+                              R_Room_ID = Regestercource[index].RoomID;
+                              R_Student_Strength = Regestercource[index].Student_Strength;
+                              R_Day = Regestercource[index].Day;
+                              R_Slot_Time = Regestercource[index].SlotTime;
+                              R_Cource_Name = Regestercource[index].Courcename;
+                              RegisterCourse();
+                            },
+                            child: Container(
+                              height: 50,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  gradient: LinearGradient(colors: [
+                                    Color.fromRGBO(143, 148, 251, 1),
+                                    Color.fromRGBO(143, 148, 251, .6),
+                                  ])),
+                              child: Center(
+                                child: Text(
+                                  "Regester ",
+                                  style: TextStyle(
+                                      color: Colors.white, fontWeight: FontWeight.bold),
+                                ),
                               ),
                             ),
                           )),
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                  height: MediaQuery.of(context).size.height / 1.35,
-                  child: ListDesign()),
-            ],
-          ),
+                    ],
+                  ),
+                );
+              },
+            )),
+          ],
         ),
       ),
     );

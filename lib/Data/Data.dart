@@ -111,4 +111,13 @@ class Data {
       // print(value);
     }
   }
+
+  static  Future<String> RetrieveData() {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    DatabaseReference reference = FirebaseDatabase.instance.reference().child(
+        "UserClient").child(auth.currentUser.uid);
+    reference.once().then((DataSnapshot snapshot) {
+      Student_Name = snapshot.value["Name"];
+    });
+  }
 }
