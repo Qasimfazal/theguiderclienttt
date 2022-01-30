@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:theguiderclienttt/Meeting.dart';
 import 'package:theguiderclienttt/Screens/AttendanceView.dart';
-import 'package:theguiderclienttt/Screens/RegesterCource.dart';
+import 'package:theguiderclienttt/Screens/RegesterCources2.dart';
 
 class OnlineMadarsalist {
   var destination;
