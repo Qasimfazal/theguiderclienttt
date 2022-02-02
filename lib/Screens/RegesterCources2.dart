@@ -447,6 +447,7 @@ class _RegesterCourceListState extends State<RegesterCourceList> {
         .child("StudentCourse")
         .child(auth.currentUser.uid);
     reff.child(R_CID).set({
+      'StudentName':Student_Name,
       'RoomID': R_Room_ID,
       'Courcename': R_Cource_Name,
       'Teacher_Uid': R_TUID,

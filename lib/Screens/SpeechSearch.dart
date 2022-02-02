@@ -78,10 +78,8 @@ class _SpeechSearchState extends State<SpeechSearch> {
     'Bismillah hir Rahmaan Nir Raheem',
     'alhamdulillahi Rabbil aalameen',
     'Ar Rahmaanir Raheem',
-    'Maali ki Yawmid-Deen',
-    'Iyyaaka na budu wa lyyaaka nasta een',
+    'Mali ki Yawmid-Deen',
     'Ihdinas-Siraatal-Mustaqeem',
-    'Siraatal lazeena an amta alaihim ghayril maghdoobi alaihim wa lad daaalleen',
     'Alif laam Meeem',
     'zalikal Kitaabu laa raiba feeh hudal lilmuttaqeen',
   ];

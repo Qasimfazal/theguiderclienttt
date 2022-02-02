@@ -681,6 +681,8 @@
 
 import 'dart:io';
 import 'dart:math';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -690,6 +692,7 @@ import 'package:theguiderclienttt/globals.dart';
 import 'package:intl/intl.dart';
 
 import 'Data/Data.dart';
+import 'Screens/HomeScreen.dart';
 
 class Meeting extends StatefulWidget {
   @override
@@ -1027,6 +1030,18 @@ class _MeetingState extends State<Meeting> {
                       SizedBox(
                         height: 30,
                       ),
+
+                      InkWell(
+                        onTap: () async {
+                          String  courseid = myCoursesList[index].cid;
+                          await removeCourse(courseid);
+
+                        },
+                        child: Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                      ),
                       InkWell(
                         onTap: () {
                           DateTime now = DateTime.now();
@@ -1034,7 +1049,9 @@ class _MeetingState extends State<Meeting> {
                           //  String time = DateFormat('kk:mm').format(now);
                           if (myCoursesList[index].Day == day.toString()) {
                             _joinMeeting(myCoursesList[index].RoomID,
-                                myCoursesList[index].Courcename);
+                                myCoursesList[index].Courcename,
+                          //  myCoursesList[index].
+                            );
                           } else {
                             Fluttertoast.showToast(
                                 msg: 'Too early to start the session',
@@ -1116,7 +1133,7 @@ class _MeetingState extends State<Meeting> {
     var options = JitsiMeetingOptions(room: Room_ID)
       ..serverURL = serverUrl
       ..subject = CourceName
-      ..userDisplayName = nameText.text
+      ..userDisplayName = Student_Name.toString()
       ..userEmail = emailText.text
       ..iosAppBarRGBAColor = iosAppBarRGBAColor.text
       ..audioOnly = isAudioOnly
@@ -1129,7 +1146,7 @@ class _MeetingState extends State<Meeting> {
         "height": "100%",
         "enableWelcomePage": false,
         "chromeExtensionBanner": null,
-        "userInfo": {"displayName": CourceName}
+        "userInfo": {"displayName": Student_Name.toString()}
       };
 
     debugPrint("JitsiMeetingOptions: $options");
@@ -1169,5 +1186,23 @@ class _MeetingState extends State<Meeting> {
 
   _onError(error) {
     debugPrint("_onError broadcasted: $error");
+  }
+  removeCourse(String courseid) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    DatabaseReference reference = FirebaseDatabase.instance.reference().child("StudentCourse").child(auth.currentUser.uid)
+        .child(courseid);
+    reference.remove().whenComplete(() {
+      Fluttertoast.showToast(
+          msg: 'Course Deleted',
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0);
+      Navigator.pushReplacement(
+
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+    });
   }
 }
